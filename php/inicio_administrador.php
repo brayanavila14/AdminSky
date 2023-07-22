@@ -25,7 +25,7 @@ if (!$_SESSION['Usuario']) {
     <div class="contenedor">
         <div class="opciones">
             <h2>Opciones</h2>
-                <a class="opcion" href="">
+                <a class="opcion" href="caja_registradora.php">
                     <img src="../imagenes/caja-registradora.png">
                     <h5>Caja registradora</h5>
                 <a  class="opcion" href="inventario.php">
