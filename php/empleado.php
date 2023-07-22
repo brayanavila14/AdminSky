@@ -22,35 +22,35 @@
     <?php
     session_start();
     include("base-de-datos.php");
-
-    // Consulta para obtener los registros de la tabla inventario
-    $consulta_inventario = "SELECT * FROM inventario";
-    $resultado_inventario = mysqli_query($conexion, $consulta_inventario);
+    
+    // Consulta para obtener los registros de empleados de la tabla personal
+    $consulta_empleado = "SELECT * FROM personal WHERE Cargo='Empleado'";
+    $resultado_empleado = mysqli_query($conexion, $consulta_empleado);
 
     // Verificar si se encontraron registros
-    if (mysqli_num_rows($resultado_inventario) > 0) {
+    if (mysqli_num_rows($resultado_empleado) > 0) {
         // Mostrar los datos en una tabla
-        echo '<table class="inventario">';
+        echo '<table class="empleados">';
 
         // Iterar sobre los registros y mostrarlos
-        while ($fila = mysqli_fetch_assoc($resultado_inventario)) {
-            $code = $fila['Código'];
-            $nombre = $fila['Producto'];
-            $precio = $fila['Precio'];
-            $cantidad = $fila['Cantidad'];
+        while ($fila = mysqli_fetch_assoc($resultado_empleado)) {
+            $IDnumber = $fila['Id'];
+            $name = $fila['Nombre'];
+            $second_name = $fila['Segundo nombre (opcional)'];
+            $last_name = $fila['Apellidos'];
 
             echo '<tr>';
-            echo '<td class="columns">' . $code . '</td>';
-            echo '<td class="columns">' . $nombre . '</td>';
-            echo '<td class="columns">$' . $precio . '</td>';
-            echo '<td class="columns">' . $cantidad . '</td>';
+            echo '<td class="columns">' . $IDnumber . '</td>';
+            echo '<td class="columns">' . $name . '</td>';
+            echo '<td class="columns">' . $second_name . '</td>';
+            echo '<td class="columns">' . $last_name . '</td>';
             echo '<td class="columns extra"> : </td>';
             echo '</tr>';
         }
 
         echo '</table>';
     } else {
-        echo '<h1 class="mensaje-error">No hay productos en el inventario.</h1>';
+        echo '<h1 class="mensaje-error">No empleados registrados.</h1>';
     }
 
     mysqli_close($conexion);
