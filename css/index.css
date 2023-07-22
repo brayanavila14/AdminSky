@@ -1,0 +1,102 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+@font-face {
+    font-family: especial;
+    src: url(../fuentes/BrunoAceSC-Regular.ttf);
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f8ff;
+}
+.contenedor {
+    background-color: #aecefa;
+    width: 40%;
+    height: 60vh;
+    margin: 8% auto;
+    padding: 25px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.4);
+   
+}
+.contenedor h1 {
+    font-family: especial;
+    font-size: 180%;
+    color: #444444;
+    margin: 10px 0 20px 0;
+}
+.contenedor input {
+    margin: 4% auto ;
+    padding: 10px;
+    font-size: 150%;
+    border-radius: 10px;
+    width: 80%;
+    border: none;
+    background-color: #ffffff;
+}
+#eye-password{
+    cursor: pointer;
+    position: absolute;
+    top: calc(52% + 5px);
+    right: calc(36% + 5px);
+    width: 32px;
+    height: 30px;
+}
+::-webkit-inner-spin-button{
+    display: none;
+}
+input[type="number"]:hover, input[type="password"]:hover {
+    transform: scale(1.02);
+    transition: .3s;
+}
+input[type="submit"] {
+    background-color: #4d85c9;
+    border-radius: 20px;
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-color: #0056b3;
+    transform: scale(1.04);
+    transition: 0.7s;
+}
+.mensaje-error{
+    position: fixed;
+    top: 22%;
+    left: 35%;
+    width: 30%;
+    height: 10%;
+    text-align: center;
+    background-color: rgba(255, 32, 32, 0.9) ;
+    color: #C2E5FF;
+    border: 1px solid rgba(255, 0, 0, 0.6);
+    font-size: 150%;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 5s ease-in-out, transform 5s ease-in-out;
+    animation: saltar 5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes saltar {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(8px);
+}
+100% {
+    transform: translateY(0);
+    opacity: 0;
+}
+}

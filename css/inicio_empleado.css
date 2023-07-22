@@ -1,0 +1,136 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: cuerpo
+    ;
+}
+@font-face {
+    font-family: cuerpo;
+    src: url(../fuentes/BrunoAceSC-Regular.ttf);
+}
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f8ff;
+}
+.contenedor{
+    background-color: #aecefa;
+    width: 40%;
+    height: 400px;
+    margin: 5% auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+.opcion {
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    padding: 20px ;
+    border-radius: 20px;
+    background-color: #82a2c9;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+}
+.opcion a{
+    text-decoration: none;
+    color: black;
+}
+.opcion:hover {
+    transform: scale(1.05);
+    transition: 0.8s;
+    background-color: #f2f8ffd0;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+}
+.opcion img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+.opcion h5 {
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+}
+.sesionclose{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    top: 13%;
+    right: 2.5%;
+    background-color: #82a2c9;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    border: 0;
+}
+.sesionclose:active{
+    background-color: #ff4242a8;
+}
+.sesionclose:hover{
+    transition: 1s;
+    transform: scale(1.2);
+}
+.estado {
+    position: fixed;
+    top: 4%;
+    right: 2%;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.estado p {
+    font-family: especial;
+    font-size: 70%;
+    margin: 0;
+}
+.bien {
+    color: #38b759;
+    background-color: #c2f0c2;
+}
+.mal {
+    color: #ff4242;
+    background-color: #ffbaba;
+}
+@keyframes saltar {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(8px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+.mensaje-exito {
+    position: fixed;
+    top: 5%;
+    left: 32%;
+    width: 36%;
+    text-align: center;
+    background-color: #C2E5FF;
+    color: #38b759;;
+    border: 1px solid #38b759;;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+    animation: saltar 3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes saltar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+
