@@ -14,7 +14,7 @@
     <div class="subencabezado">
         <h1 class="tittle arrays0">Código</h1>
         <h1 class="tittle arrays1">Producto</h1>
-        <h1 class="tittle arrays2">Precio($)</h1>
+        <h1 class="tittle arrays2">Precio</h1>
         <h1 class="tittle arrays3">Cantidad</h1>
     </div>
 
@@ -43,7 +43,7 @@
             echo '<td class="columns">' . $nombre . '</td>';
             echo '<td class="columns">$' . $precio . '</td>';
             echo '<td class="columns">' . $cantidad . '</td>';
-            echo '<td class="columns extra"> : </td>';
+            echo '<td class="columns"><img src="../imagenes/tres-puntos.png" alt=":" class="extra"></td>';
             echo '</tr>';
         }
 

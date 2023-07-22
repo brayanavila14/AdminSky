@@ -41,13 +41,13 @@ body {
     width: calc(16% + 5px);
 }
 .arrays1{
-    width: 50%;
+    width: 51%;
 }   
 .arrays2{
-    width: 16%;
+    width: 16.5%;
 }
 .arrays3{
-    width: 14%;
+    width: 5.4%;
 }
 .inventario{
     width: 100%;
@@ -56,13 +56,11 @@ body {
 }
 .columns{
     text-align: center;
-    padding-right: 30px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
 .extra{
     cursor: pointer;
-    background-color: #dde4ec;
-    margin: 0;
+    margin: 2px 0;
     padding: 0;
 }
 .mensaje-error {

@@ -38,31 +38,29 @@ body {
     text-align: center;
 }
 .arrays0{
-    width: calc(16% + 5px);
+    width: 24%;
 }
 .arrays1{
-    width: 50%;
+    width: 18.5%;
 }   
 .arrays2{
-    width: 16%;
+    width: 20%;
 }
 .arrays3{
-    width: 14%;
+    width: 30.5%;
 }
-.inventario{
+.empleados{
     width: 100%;
     font-size: 180%;
   
 }
 .columns{
     text-align: center;
-    padding-right: 30px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
 .extra{
     cursor: pointer;
-    background-color: #dde4ec;
-    margin: 0;
+    margin: 2px 0;
     padding: 0;
 }
 .mensaje-error {

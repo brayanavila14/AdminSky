@@ -16,9 +16,7 @@
         <h1 class="tittle arrays1">Nombre</h1>
         <h1 class="tittle arrays2">Segundo Nombre</h1>
         <h1 class="tittle arrays3">Apellidos</h1>
-         <h1 class="tittle arrays3">Apellidos</h1>
     </div>
-
     <?php
     session_start();
     include("base-de-datos.php");
@@ -44,13 +42,13 @@
             echo '<td class="columns">' . $name . '</td>';
             echo '<td class="columns">' . $second_name . '</td>';
             echo '<td class="columns">' . $last_name . '</td>';
-            echo '<td class="columns extra"> : </td>';
+            echo '<td class="columns"><img src="../imagenes/tres-puntos.png" alt=":" class="extra"></td>';
             echo '</tr>';
         }
 
         echo '</table>';
     } else {
-        echo '<h1 class="mensaje-error">No empleados registrados.</h1>';
+        echo '<h1 class="mensaje-error">No hay empleados registrados</h1>';
     }
 
     mysqli_close($conexion);
