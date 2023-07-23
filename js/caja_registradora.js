@@ -1,9 +1,9 @@
 $(document).ready(function() {
   // Seleccionar el elemento con el id "code_input" y registrar el evento "input"
   $("#code_input").on('input', function() {
-    const query = $(this).val(); // Obtener el valor del input
+    const query = $(this).val().trim(); // Obtener el valor del input y eliminar espacios en blanco al inicio y al final
 
-    if (query.length >= 2) {
+    if (query.length >= 1) {
       // Realizar la solicitud AJAX al servidor utilizando el método $.ajax() de jQuery
       $.ajax({
         url: `http://localhost:3000/php/busqueda_codigo.php?query=${query}`, // URL del servidor
@@ -24,8 +24,9 @@ $(document).ready(function() {
         }
       });
     } else {
-      // Si el código ingresado es menor a 2 caracter, limpiamos los resultados
+      // Si el código ingresado es menor a 1 caracteres o está vacío, limpiamos los resultados
       $("#search_results").empty();
     }
   });
 });
+
