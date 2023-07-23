@@ -28,7 +28,7 @@
         </div>
     </div>
     
-    <form action="" method="post" class="inputs">
+    <form  method="post" class="inputs">
         <input id="code_input" type="text" placeholder="Código" maxlength="5" autocomplete="off">
         <div id="search_results"></div>
         <input id="product_input" type="text" placeholder="Producto" disabled>

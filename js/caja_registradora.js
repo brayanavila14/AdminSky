@@ -133,6 +133,52 @@ $(document).ready(function() {
       selectedIndex = -1; // Reiniciar el índice seleccionado
     }
   });
+
+   // Evento para capturar el clic en el botón "Ingresar"
+   $("input[type='submit']").on("click", function(event) {
+    event.preventDefault(); // Prevenir el comportamiento por defecto del botón submit
+
+    // Obtener los valores de los campos
+    const codigo = $("#code_input").val().trim();
+    const producto = $("#product_input").val();
+    const precio = parseFloat($("#price_input").val());
+    const cantidad = parseInt($("#cantidad_input").val());
+
+    if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
+      // Calcular el total
+      const total = precio * cantidad;
+
+      // Crear la fila de la tabla con los valores ingresados
+      const fila = `
+        <div class="tabla-fila">
+          <div>${codigo}</div>
+          <div>${producto}</div>
+          <div>${precio}</div>
+          <div>${cantidad}</div>
+          <div>${total}</div>
+        </div>
+      `;
+
+      // Agregar la fila a la tabla
+      $(".campo1").append(fila);
+
+      // Limpiar los campos después de ingresar los valores
+      $("#code_input").val("");
+      $("#product_input").val("");
+      $("#price_input").val("");
+      $("#cantidad_input").val("");
+      $("#search_results").empty();
+
+      // Reiniciar el índice seleccionado
+      selectedIndex = -1;
+
+      const inputCode = document.getElementById('code_input')
+      inputCode.focus();
+
+    } else {
+      alert("Por favor, ingrese todos los campos correctamente.");
+    }
+  });
 });
 
   
