@@ -47,6 +47,7 @@ $(document).ready(function() {
 
   $("#code_input").on("input", updateResults);
 
+  // Evento para capturar el clic en los elementos dentro de search-results
   $("#search_results").on("click", "div", function() {
     const selectedCode = $(this).text().trim();
     $("#code_input").val(selectedCode);
@@ -54,7 +55,7 @@ $(document).ready(function() {
 
     // Realizar la solicitud AJAX al servidor para obtener el producto y el precio
     $.ajax({
-      url: `http://localhost:3000/php/busqueda_producto_precio.php?code=${selectedCode}`,
+      url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -71,18 +72,6 @@ $(document).ready(function() {
         console.error('Error en la solicitud AJAX');
       }
     });
-  });
-
-  // Evento para capturar el clic en los elementos dentro de search-results
-  $("#search_results").on("click", "div", function() {
-    // Obtener el texto del código seleccionado
-    const selectedCode = $(this).text().trim();
-
-    // Establecer el texto del código en el input
-    $("#code_input").val(selectedCode);
-
-    // Vaciar el contenido de search-results
-    $("#search_results").empty();
   });
 
   // Evento para manejar la navegación con las flechas del teclado
@@ -112,6 +101,29 @@ $(document).ready(function() {
   function updateSelectedResult() {
     $("#search_results").children("div").removeClass("selected");
     $("#search_results").children("div").eq(selectedIndex).addClass("selected");
+
+    // Obtener el texto del código seleccionado
+    const selectedCode = $("#search_results").children("div").eq(selectedIndex).text().trim();
+
+    // Realizar la solicitud AJAX al servidor para obtener el producto y el precio
+    $.ajax({
+      url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        if (data && data.length > 0) {
+          const producto = data[0].Producto;
+          const precio = data[0].Precio;
+
+          // Actualizar los campos de producto y precio con los datos obtenidos
+          $("#product_input").val(producto);
+          $("#price_input").val(precio);
+        }
+      },
+      error: function() {
+        console.error('Error en la solicitud AJAX');
+      }
+    });
   }
 
   // Evento para ocultar search_results cuando se haga clic fuera de él
@@ -123,4 +135,5 @@ $(document).ready(function() {
   });
 });
 
+  
 
