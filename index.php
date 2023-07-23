@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="contenedor">
-        <h1>Sistema de Caja Registradora</h1>
+        <h1>AdminSky</h1>
         <form method="post">
             <input id="input-usuario" type="number" placeholder="Usuario(numero de identificación)" name="username" autocomplete="off">
             <input id="input-password" type="password" placeholder="Codigo" name="code" autocomplete="off">

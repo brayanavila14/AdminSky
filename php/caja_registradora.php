@@ -27,17 +27,19 @@
             <div class="boton">ENTER</div>
         </div>
     </div>
-    <div class="inputs">
-            <input id="code_input" type="text" placeholder="Código" maxlength="5">
-            <div id="search_results"></div>
-            <input type="text" placeholder="Producto" disabled>
-            <input type="number" placeholder="Precio" disabled>
-            <input type="number" placeholder="Cantidad">
-            <input type="submit" value="Ingresar">
-        </div>
+    
+    <form action="" method="post" class="inputs">
+        <input id="code_input" type="text" placeholder="Código" maxlength="5" autocomplete="off">
+        <div id="search_results"></div>
+        <input id="product_input" type="text" placeholder="Producto" disabled>
+        <input id="price_input" type="number" placeholder="Precio" disabled>
+        <input id="cantidad_input" type="number" placeholder="Cantidad" autocomplete="off">
+        <input type="submit" value="Ingresar">
+    </form>
+
     <div class="campo1"></div>
     <div class="footer"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../library/jquery-3.7.0.js"></script>
     <script src="../js/caja_registradora.js"></script>
 </body>
 </html>

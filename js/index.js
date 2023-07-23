@@ -20,13 +20,6 @@ inputPassword.addEventListener('input', function() {
   }
 });
 
-// Detener la escritura después de 10 caracteres en el usuario
-inputUsuario.addEventListener('input', function() {
-  if (inputUsuario.value.length > 4) {
-    inputUsuario.value = inputUsuario.value.slice(0, 10);
-  }
-});
-
 // pasar de usuario a codigo
 inputUsuario.addEventListener('keypress', function(event) {
   if (event.key === 'Enter') {

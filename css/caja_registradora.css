@@ -77,16 +77,26 @@ input[type='submit']{
     
 }
 #search_results{
-    background-color: black;
-    color: white;
+    background-color: #f2f8ff;
     position: fixed;
-    top: 16.5%;
+    top: 17%;
     left: 4%;
     width: 15.4%;
-    padding-left: 1%;
+    font-size: 110%;
     display: block;
     z-index: 5;
+    max-height: 20%; /* Altura máxima que deseas */
+    overflow-y: auto; /* Añadir una barra de desplazamiento vertical si los resultados exceden la altura máxima */
 }
+.items{
+    padding-left: 5%;
+}
+.items:hover{
+    background-color: #cecece;
+}
+.selected {
+    background-color: #cecece;
+  }
 .calculadora {
     position: relative;
     top: 15%;

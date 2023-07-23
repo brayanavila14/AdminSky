@@ -25,10 +25,12 @@ body {
    
 }
 .contenedor h1 {
-    font-family: especial;
-    font-size: 180%;
-    color: #444444;
-    margin: 10px 0 20px 0;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 400%;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 2px 2px 4px #00000088;
+    letter-spacing: 2px;
+    margin: 10px 0 10px 0;
 }
 .contenedor input {
     margin: 4% auto ;
