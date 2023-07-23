@@ -35,8 +35,9 @@
             <input type="number" placeholder="Cantidad">
             <input type="submit" value="Ingresar">
         </div>
-    <div class="campo1">.</div>
-    <div class="footer">,</div>
+    <div class="campo1"></div>
+    <div class="footer"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/caja_registradora.js"></script>
 </body>
 </html>

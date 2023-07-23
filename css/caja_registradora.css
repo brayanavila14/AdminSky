@@ -76,12 +76,13 @@ input[type='submit']{
     
 }
 #search_results{
-    background-color: #4d85c9;
+    background-color: black;
+    color: white;
     position: fixed;
-    top: 20px;
-    left: 5%;
+    top: 20%;
+    left: 6.5%;
     display: block;
-    z-index: 3;
+    z-index: 5;
 }
 .calculadora {
     position: relative;

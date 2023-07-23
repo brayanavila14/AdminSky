@@ -1,6 +1,6 @@
 <?php
 // Conectarse a la base de datos
-include("php/base-de-datos.php");
+include("base-de-datos.php");
 
 // Obtener el valor de búsqueda del cliente
 if (isset($_GET['query'])) {

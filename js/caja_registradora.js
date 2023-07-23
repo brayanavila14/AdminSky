@@ -1,34 +1,31 @@
-const Input = document.getElementById('code_input');
-const ResultsCode = document.getElementById('search-results');
+$(document).ready(function() {
+  // Seleccionar el elemento con el id "code_input" y registrar el evento "input"
+  $("#code_input").on('input', function() {
+    const query = $(this).val(); // Obtener el valor del input
 
-Input.addEventListener('input', function() {
-  const query = Input.value;
+    if (query.length >= 2) {
+      // Realizar la solicitud AJAX al servidor utilizando el método $.ajax() de jQuery
+      $.ajax({
+        url: `http://localhost:3000/php/busqueda_codigo.php?query=${query}`, // URL del servidor
+        method: 'GET', // Método de la solicitud
+        dataType: 'json', // Tipo de datos esperado en la respuesta (JSON en este caso)
+        success: function(results) { // Función a ejecutar cuando la solicitud sea exitosa
+          // Limpiamos los resultados anteriores
+          $("#search_results").empty();
 
-  if (query.length >= 1) {
-    // Realizar la solicitud AJAX al servidor
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `busqueda_codigo.php?query=${query}`, true);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        // Obtener los resultados como un array de objetos JSON
-        const results = JSON.parse(xhr.responseText);
-
-        // Limpiamos los resultados anteriores
-        ResultsCode.innerHTML = '';
-
-        // Mostramos los resultados
-        results.forEach(result => {
-          const resultItem = document.createElement('div');
-          resultItem.textContent = result.Código;
-          ResultsCode.appendChild(resultItem);
-        });
-      }
-    };
-    xhr.send();
-  } else {
-    // Si el código ingresado es menor a 3 caracteres, limpiamos los resultados
-    ResultsCode.innerHTML = '';
-  }
+          // Mostramos los resultados
+          results.forEach(function(result) {
+            const resultItem = $("<div>").text(result.Código);
+            $("#search_results").append(resultItem);
+          });
+        },
+        error: function() { // Función a ejecutar en caso de error
+          console.error('Error en la solicitud AJAX');
+        }
+      });
+    } else {
+      // Si el código ingresado es menor a 2 caracter, limpiamos los resultados
+      $("#search_results").empty();
+    }
+  });
 });
-
-
