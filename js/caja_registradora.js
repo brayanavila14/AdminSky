@@ -10,7 +10,7 @@ $(document).ready(function() {
       // Limpiar el temporizador existente para que no se ejecute si el usuario sigue escribiendo
       clearTimeout(timer);
 
-      if (query.length >= 1) {
+      if (query.length > 0) {
         // Realizar la solicitud AJAX al servidor utilizando el método $.ajax() de jQuery
         timer = setTimeout(function() {
           $.ajax({
