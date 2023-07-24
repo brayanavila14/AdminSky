@@ -26,14 +26,14 @@ if (isset($_GET['code'])) {
     $code = $_GET['code'];
 
     // Realizar la consulta en la base de datos para obtener el producto y el precio
-    $consulta = "SELECT Producto, Precio FROM inventario WHERE Código = '$code' LIMIT 1";
-    $resultado = mysqli_query($conexion, $consulta);
+    $consulta2 = "SELECT Producto, Precio FROM inventario WHERE Código = '$code' LIMIT 1";
+    $resultado2 = mysqli_query($conexion, $consulta2);
 
     // Crear un array para almacenar los resultados
     $data = array();
 
     // Agregar los datos de producto y precio al array
-    while ($fila = mysqli_fetch_assoc($resultado)) {
+    while ($fila = mysqli_fetch_assoc($resultado2)) {
         $data[] = $fila;
     }
 
