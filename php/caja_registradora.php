@@ -36,7 +36,7 @@
         <input id="cantidad_input" type="number" placeholder="Cantidad" autocomplete="off">
         <input type="submit" value="Ingresar">
     </form>
-
+    <button id="btnEliminar" type="button">Eliminar tabla</button>
     <div class="campo1"></div>
     <div class="footer"></div>
     <script src="../library/jquery-3.7.0.js"></script>

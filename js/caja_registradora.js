@@ -1,45 +1,35 @@
 $(document).ready(function() {
-  let selectedIndex = -1; // Variable para rastrear el índice del elemento seleccionado en los resultados
+  let selectedIndex = -1;
 
   function updateResults() {
-    let timer; // Variable para guardar el ID del temporizador
+    let timer;
 
     $("#code_input").on('input', function() {
-      const query = $(this).val().trim(); // Obtener el valor del input y eliminar espacios en blanco al inicio y al final
+      const query = $(this).val().trim();
 
-      // Limpiar el temporizador existente para que no se ejecute si el usuario sigue escribiendo
       clearTimeout(timer);
 
       if (query.length > 0) {
-        // Realizar la solicitud AJAX al servidor utilizando el método $.ajax() de jQuery
         timer = setTimeout(function() {
           $.ajax({
-            url: `http://localhost:3000/php/busqueda_codigo.php?query=${query}`, // URL del servidor
-            method: 'GET', // Método de la solicitud
-            dataType: 'json', // Tipo de datos esperado en la respuesta (JSON en este caso)
-            success: function(results) { // Función a ejecutar cuando la solicitud sea exitosa
-              // Limpiamos los resultados anteriores
+            url: `http://localhost:3000/php/busqueda_codigo.php?query=${query}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(results) {
               $("#search_results").empty();
 
-              // Mostramos los resultados
               results.forEach(function(result) {
-                // Creamos un nuevo elemento div
                 const resultItem = $("<div>").text(result.Código);
-
-                // Añadimos la clase "items" al nuevo div
                 resultItem.addClass("items");
-
-                // Agregamos el nuevo div al elemento con id "search_results"
                 $("#search_results").append(resultItem);
               });
             },
-            error: function() { // Función a ejecutar en caso de error
+            error: function() {
               console.error('Error en la solicitud AJAX');
             }
           });
-        }, 300); // Tiempo de retraso en milisegundos antes de enviar la solicitud AJAX
+        }, 300);
       } else {
-        // Si el código ingresado es menor a 1 caracteres o está vacío, limpiamos los resultados
         $("#search_results").empty();
       }
     });
@@ -47,13 +37,11 @@ $(document).ready(function() {
 
   $("#code_input").on("input", updateResults);
 
-  // Evento para capturar el clic en los elementos dentro de search-results
   $("#search_results").on("click", "div", function() {
     const selectedCode = $(this).text().trim();
     $("#code_input").val(selectedCode);
     $("#search_results").empty();
 
-    // Realizar la solicitud AJAX al servidor para obtener el producto y el precio
     $.ajax({
       url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
       method: 'GET',
@@ -62,8 +50,6 @@ $(document).ready(function() {
         if (data && data.length > 0) {
           const producto = data[0].Producto;
           const precio = data[0].Precio;
-
-          // Actualizar los campos de producto y precio con los datos obtenidos
           $("#product_input").val(producto);
           $("#price_input").val(precio);
         }
@@ -74,38 +60,32 @@ $(document).ready(function() {
     });
   });
 
-  // Evento para manejar la navegación con las flechas del teclado
   $("#code_input").on("keydown", function(event) {
-    const resultsCount = $("#search_results").children("div").length; // Cantidad de elementos en los resultados
+    const resultsCount = $("#search_results").children("div").length;
     const keyCode = event.keyCode;
-      
+
     if (keyCode === 40) { // Flecha hacia abajo
-      selectedIndex = (selectedIndex + 1) % resultsCount; // Incrementar el índice seleccionado
+      selectedIndex = (selectedIndex + 1) % resultsCount;
       updateSelectedResult();
     } else if (keyCode === 38) { // Flecha hacia arriba
-      selectedIndex = (selectedIndex - 1 + resultsCount) % resultsCount; // Decrementar el índice seleccionado
+      selectedIndex = (selectedIndex - 1 + resultsCount) % resultsCount;
       updateSelectedResult();
     } else if (keyCode === 13) { // Tecla Enter
-      // Obtener el texto del código seleccionado
       const selectedCode = $("#search_results").children("div").eq(selectedIndex).text().trim();
       event.preventDefault();
       $("#code_input").val(selectedCode);
       $("#search_results").empty();
-
-      const inputCantidad = document.getElementById('cantidad_input')
+      const inputCantidad = document.getElementById('cantidad_input');
       inputCantidad.focus();
     }
   });
 
-  // Función para actualizar la clase "selected" en el elemento seleccionado
   function updateSelectedResult() {
     $("#search_results").children("div").removeClass("selected");
     $("#search_results").children("div").eq(selectedIndex).addClass("selected");
 
-    // Obtener el texto del código seleccionado
     const selectedCode = $("#search_results").children("div").eq(selectedIndex).text().trim();
 
-    // Realizar la solicitud AJAX al servidor para obtener el producto y el precio
     $.ajax({
       url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
       method: 'GET',
@@ -114,8 +94,6 @@ $(document).ready(function() {
         if (data && data.length > 0) {
           const producto = data[0].Producto;
           const precio = data[0].Precio;
-
-          // Actualizar los campos de producto y precio con los datos obtenidos
           $("#product_input").val(producto);
           $("#price_input").val(precio);
         }
@@ -126,29 +104,23 @@ $(document).ready(function() {
     });
   }
 
-  // Evento para ocultar search_results cuando se haga clic fuera de él
   $(document).on("click", function(event) {
     if (!$(event.target).closest("#search_results").length) {
       $("#search_results").empty();
-      selectedIndex = -1; // Reiniciar el índice seleccionado
+      selectedIndex = -1;
     }
   });
 
-   // Evento para capturar el clic en el botón "Ingresar"
-   $("input[type='submit']").on("click", function(event) {
-    event.preventDefault(); // Prevenir el comportamiento por defecto del botón submit
+  $("input[type='submit']").on("click", function(event) {
+    event.preventDefault();
 
-    // Obtener los valores de los campos
     const codigo = $("#code_input").val().trim();
     const producto = $("#product_input").val();
     const precio = parseFloat($("#price_input").val());
     const cantidad = parseInt($("#cantidad_input").val());
 
     if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
-      // Calcular el total
       const total = precio * cantidad;
-
-      // Crear la fila de la tabla con los valores ingresados
       const fila = `
         <div class="tabla-fila">
           <div>${codigo}</div>
@@ -158,28 +130,45 @@ $(document).ready(function() {
           <div>${total}</div>
         </div>
       `;
-
-      // Agregar la fila a la tabla
       $(".campo1").append(fila);
 
-      // Limpiar los campos después de ingresar los valores
       $("#code_input").val("");
       $("#product_input").val("");
       $("#price_input").val("");
       $("#cantidad_input").val("");
       $("#search_results").empty();
-
-      // Reiniciar el índice seleccionado
       selectedIndex = -1;
 
-      const inputCode = document.getElementById('code_input')
+      const inputCode = document.getElementById('code_input');
       inputCode.focus();
+
+      guardarDatosEnAlmacenamientoLocal();
 
     } else {
       alert("Por favor, ingrese todos los campos correctamente.");
     }
   });
+
+  function guardarDatosEnAlmacenamientoLocal() {
+    const filas = $(".campo1").html();
+    localStorage.setItem("datosTabla", filas);
+  }
+
+  function cargarDatosDesdeAlmacenamientoLocal() {
+    const datosGuardados = localStorage.getItem("datosTabla");
+    if (datosGuardados) {
+      $(".campo1").html(datosGuardados);
+    }
+  }
+
+  cargarDatosDesdeAlmacenamientoLocal();
+
+  function eliminarDatosDelAlmacenamientoLocal() {
+    localStorage.removeItem("datosTabla");
+  }
+
+  $("#btnEliminar").on("click", function() {
+    $(".campo1").empty();
+    eliminarDatosDelAlmacenamientoLocal();
+  });
 });
-
-  
-

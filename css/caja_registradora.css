@@ -111,7 +111,13 @@ input[type='submit']{
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-
+#btnEliminar{
+    position: fixed;
+    bottom: 5%;
+    right: 10%;
+    background-color: #4d85c9;
+    z-index: 3;
+}
 .boton {
     display: flex;
     justify-content: center;
