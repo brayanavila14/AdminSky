@@ -11,15 +11,7 @@ if (!$_SESSION['Usuario']) {
     echo $_SESSION['mensaje'];
     unset($_SESSION['mensaje']); // Limpiar el mensaje de la variable de sesión para que no se muestre nuevamente en futuras visitas
     }
-
-if (isset($_POST['cerrar'])) {
-    // Destruir la sesión actual
-    session_destroy();
-
-    // Redireccionar al inicio de sesión
-    header("Location: ../index.php");
-    exit;
-}
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,19 +23,11 @@ if (isset($_POST['cerrar'])) {
     <title>Inicio - sistema de caja registradora</title>
 </head>
 <body>
-<form method="post">
-        <input name="cerrar" class="sesionclose" type="submit" value="Salir">
-    </form>
     <div class="contenedor">
-        <div class="opcion">
-            <a href="caja.php">
+            <a href="caja.php" class="opcion">
                 <img src="../imagenes/caja-registradora.png">
                 <h5>Caja registradora</h5>
             </a>
-        </div>
     </div>
-    <?php
-    include("base-de-datos.php");
-    ?>
 </body>
 </html>

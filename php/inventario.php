@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!$_SESSION['Usuario']) {
+    header("Location: ../index.php");
+    exit;
+}
+   ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,9 +26,7 @@
     </div>
 
     <?php
-    session_start();
     include("base-de-datos.php");
-
     // Consulta para obtener los registros de la tabla inventario
     $consulta_inventario = "SELECT * FROM inventario";
     $resultado_inventario = mysqli_query($conexion, $consulta_inventario);
