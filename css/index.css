@@ -46,7 +46,7 @@ body {
     position: absolute;
     top: calc(52% + 5px);
     right: calc(36% + 5px);
-    width: 32px;
+    width: 28px;
     height: 30px;
 }
 ::-webkit-inner-spin-button{

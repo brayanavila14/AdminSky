@@ -19,7 +19,7 @@ if (isset($_POST['ingresar'])) {
         
         if ($info_personal['Id'] == $username && $info_personal['Código'] == $code) {
             $_SESSION['Usuario'] = $username;
-            $_SESSION['Mensaje'] = '<div class="mensaje-exito">¡Bienvenido, ' . $info_personal['nombre'] . ' ' . $info_personal['apellidos'] . '!</div>';
+            $_SESSION['Mensaje'] = '<div class="mensaje-exito">¡Bienvenido, ' . $info_personal['Nombre'] . ' ' . $info_personal['Apellidos'] . '!</div>';
             
             if ($info_personal['Cargo'] == "Jefe" ) {
                 header("Location: php/inicio_administrador.php");

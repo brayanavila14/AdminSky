@@ -19,7 +19,7 @@ if (!$_SESSION['Usuario']) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/inicio_administrador.css">
-    <title>Inicio</title>
+    <title>Inicio - AdminSky</title>
 </head>
 <body>
     <div class="contenedor">
@@ -33,7 +33,7 @@ if (!$_SESSION['Usuario']) {
                     <h5>Inventario</h5>
                 </a>
                 </a>
-                <a class="opcion" href="">
+                <a class="opcion" href="credito.php">
                     <img src="../imagenes/credito.png" alt="">
                     <h5>Créditos</h5>
                 </a>

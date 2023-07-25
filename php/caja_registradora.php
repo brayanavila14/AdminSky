@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/caja_registradora.css">
-    <title>Caja registradora</title>
+    <title>Caja registradora - AdminSky</title>
 </head>
 <body>
     <div class="encabezado">
@@ -37,8 +37,11 @@
         <input type="submit" value="Ingresar">
     </form>
     <button id="btnEliminar" type="button">Eliminar tabla</button>
-    <div class="campo1"></div>
-    <div class="footer"></div>
+    <div class="campo1">
+    </div>
+    <div class="footer">
+        <input id="total_input" type="number" disabled>
+    </div>
     <script src="../library/jquery-3.7.0.js"></script>
     <script src="../js/caja_registradora.js"></script>
 </body>

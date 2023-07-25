@@ -38,12 +38,12 @@ $(document).ready(function() {
   $("#code_input").on("input", updateResults);
 
   $("#search_results").on("click", "div", function() {
-    const selectedCode = $(this).text().trim();
-    $("#code_input").val(selectedCode);
+    const Code = $(this).text().trim();
+    $("#code_input").val(Code);
     $("#search_results").empty();
 
     $.ajax({
-      url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
+      url: `http://localhost:3000/php/busqueda_codigo.php?code=${Code}`,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -59,7 +59,6 @@ $(document).ready(function() {
       }
     });
   });
-
   $("#code_input").on("keydown", function(event) {
     const resultsCount = $("#search_results").children("div").length;
     const keyCode = event.keyCode;
@@ -84,10 +83,10 @@ $(document).ready(function() {
     $("#search_results").children("div").removeClass("selected");
     $("#search_results").children("div").eq(selectedIndex).addClass("selected");
 
-    const selectedCode = $("#search_results").children("div").eq(selectedIndex).text().trim();
+    const Code = $("#search_results").children("div").eq(selectedIndex).text().trim();
 
     $.ajax({
-      url: `http://localhost:3000/php/busqueda_codigo.php?code=${selectedCode}`,
+      url: `http://localhost:3000/php/busqueda_codigo.php?code=${Code}`,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -111,6 +110,11 @@ $(document).ready(function() {
     }
   });
 
+  function guardarDatosEnAlmacenamientoLocal() {
+    const filas = $(".campo1").html();
+    localStorage.setItem("datosTabla", filas);
+  }
+
   $("input[type='submit']").on("click", function(event) {
     event.preventDefault();
 
@@ -120,17 +124,27 @@ $(document).ready(function() {
     const cantidad = parseInt($("#cantidad_input").val());
 
     if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
-      const total = precio * cantidad;
-      const fila = `
-        <div class="tabla-fila">
-          <div>${codigo}</div>
-          <div>${producto}</div>
-          <div>${precio}</div>
-          <div>${cantidad}</div>
-          <div>${total}</div>
-        </div>
+      const subtotal = precio * cantidad;
+      const fila0 = `
+        <tr class="tittle">
+          <td>Código</td>
+          <td>Producto</td>
+          <td>Precio</td>
+          <td>Cantidad</td>
+          <td>Total</td>
+        </tr>
       `;
-      $(".campo1").append(fila);
+      const fila1 = `
+        <tr class="tabla-fila">
+          <td>${codigo}</td>
+          <td>${producto}</td>
+          <td>$${precio}</td>
+          <td>${cantidad}</td>
+          <td>$${subtotal}</td>
+        </tr>
+      `;
+      $(".campo1").append(fila0);
+      $(".campo1").append(fila1);
 
       $("#code_input").val("");
       $("#product_input").val("");
@@ -143,16 +157,13 @@ $(document).ready(function() {
       inputCode.focus();
 
       guardarDatosEnAlmacenamientoLocal();
+      
+      $("#total_input").val() = subtotal + subtotal;
 
     } else {
       alert("Por favor, ingrese todos los campos correctamente.");
     }
   });
-
-  function guardarDatosEnAlmacenamientoLocal() {
-    const filas = $(".campo1").html();
-    localStorage.setItem("datosTabla", filas);
-  }
 
   function cargarDatosDesdeAlmacenamientoLocal() {
     const datosGuardados = localStorage.getItem("datosTabla");
