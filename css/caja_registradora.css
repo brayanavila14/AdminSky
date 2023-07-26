@@ -1,141 +1,170 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: Arial, sans-serif;
 }
-@font-face {
-    font-family: especial;
-    src: url(../fuentes/BrunoAceSC-Regular.ttf);
-}
+
 body {
     width: 100%;
     height: 100%;
     background-color: #f2f8ff;
 }
-.encabezado{
-    position: absolute;
-    top: 0;
-    background-color: #4276b8;
-    width: 100%;
-    height: 10%;
-}
-.encabezado h2 {
-    font-family: especial;
-    text-align: center;
-    font-size: 300%;
-    letter-spacing: 5px;
-    color:#f2f8ff;
-}
-.campo1{
-    position: absolute;
-    top: 20%;
-    width: 74%;
-    max-height: 70%;
-    overflow-y: auto;
-}
-.campo2{
-    position: absolute;
-    top: 20%;
-    right: 0;
-    background-color: #e0e0e0;
-    width: 26%;
-    height: 80%;
-}
-.inputs{
-    background-color: #aecefa;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 10%;
-    display: flex;
-    position: absolute;
-    top: 10%;
-}
-input{
-    height: 60%;
+
+.container {
     position: relative;
-    top: 20%;
-    margin-left: 4%;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
     border-radius: 10px;
-    padding: 10px 10px 10px 13px; 
-    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-input[type='text'], input[type='number']{
-    font-size: 120%;
-    background-color: #f2f8ff;
-    color: black;
-}
-::-webkit-inner-spin-button{
-    display: none;
-}
-#ingresar_producto{
-    width: 10%;
-    background-color: #4d85c9;
-    color: white;
-    font-weight: bold;
-    font-size: 130%;
-    cursor: pointer;
-    
-}
-#resultados_busqueda{
-    background-color: #f2f8ff;
-    position: fixed;
-    top: 17%;
-    left: 4%;
-    width: 15.4%;
-    font-size: 110%;
-    display: block;
-    z-index: 5;
-    max-height: 20%; /* Altura máxima que deseas */
-    overflow-y: auto; /* Añadir una barra de desplazamiento vertical si los resultados exceden la altura máxima */
-}
-.elemento_resultado {
-    padding-left: 5%;
-}
-.elemento_resultado:hover {
-    background-color: #cecece;
-}
-.calculadora {
-    position: relative;
-    top: 15%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
-    width: 80%;
-    height: 60%;
-    margin: 0 auto;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-#btnEliminar{
-    position: fixed;
-    bottom: 5%;
-    right: 10%;
-    background-color: #4d85c9;
-    z-index: 3;
-}
-.boton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    font-size: 18px;
+
+.header {
     background-color: #4276b8;
-    color: white;
+    padding: 20px;
+    text-align: center;
+    color: #f2f8ff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.header h2 {
+    font-size: 30px;
+}
+
+.calculator {
+    padding: 20px;
+}
+
+.calculator .inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calculator .inputs input {
+    height: 40px;
+    padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
+    font-size: 16px;
 }
-.boton:hover {
-    background-color: #e0e0e0;
+
+.calculator #codigo_input {
+    grid-column: span 2;
 }
-.footer{
-    background-color: #4276b8;
+
+.calculator #resultados_busqueda {
+    grid-column: span 2;
+    position: relative;
+}
+
+.calculator #resultados_busqueda::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 10%;
+    height: 100%;
+    background-color: #f2f8ff;
+    z-index: -1;
+}
+
+.calculator #resultados_busqueda::after {
+    content: '';
     position: absolute;
     bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.calculator #resultados_busqueda .elemento_resultado {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.calculator #resultados_busqueda .elemento_resultado:hover {
+    background-color: #f2f8ff;
+}
+
+.calculator #producto_input, .calculator #precio_input {
+    grid-column: span 2;
+}
+
+.calculator #ingresar_producto {
+    background-color: #4d85c9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.calculator #ingresar_producto:hover {
+    background-color: #3e6a9f;
+}
+
+.calculator .table-container {
+    overflow: auto;
+}
+
+.calculator table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calculator table tr th, .calculator table tr td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.calculator table tr th {
+    background-color: #4276b8;
+    color: #f2f8ff;
+}
+
+.calculator table tr td {
+    color: #333;
+}
+
+.calculator .total {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.calculator .total input {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#btnEliminar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4d85c9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#btnEliminar:hover {
+    background-color: #3e6a9f;
 }
