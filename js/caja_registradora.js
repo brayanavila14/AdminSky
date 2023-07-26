@@ -1,57 +1,57 @@
 $(document).ready(function() {
-  let selectedIndex = -1;
+  let indiceSeleccionado = -1;
 
-  function updateResults() {
-    let timer;
+  function actualizarResultados() {
+    let temporizador;
 
-    $("#code_input").on('input', function() {
-      const query = $(this).val().trim();
+    $("#codigo_input").on('input', function() {
+      const consulta = $(this).val().trim();
 
-      clearTimeout(timer);
+      clearTimeout(temporizador);
 
-      if (query.length > 0) {
-        timer = setTimeout(function() {
+      if (consulta.length > 0) {
+        temporizador = setTimeout(function() {
           $.ajax({
-            url: `http://localhost:3000/php/busqueda_codigo.php?query=${query}`,
+            url: `http://localhost:3000/php/buscar_codigo.php?consulta=${consulta}`,
             method: 'GET',
             dataType: 'json',
-            success: function(results) {
-              $("#search_results").empty();
+            success: function(resultados) {
+              $("#resultados_busqueda").empty();
 
-              results.forEach(function(result) {
-                const resultItem = $("<div>").text(result.Código);
-                resultItem.addClass("items");
-                $("#search_results").append(resultItem);
+              resultados.forEach(function(resultado) {
+                const elementoResultado = $("<div>").text(resultado.Código);
+                elementoResultado.addClass("elemento_resultado");
+                $("#resultados_busqueda").append(elementoResultado);
               });
             },
             error: function() {
               console.error('Error en la solicitud AJAX');
             }
           });
-        }, 300);
+        }, 200);
       } else {
-        $("#search_results").empty();
+        $("#resultados_busqueda").empty();
       }
     });
   }
 
-  $("#code_input").on("input", updateResults);
+  $("#codigo_input").on("input", actualizarResultados);
 
-  $("#search_results").on("click", "div", function() {
-    const Code = $(this).text().trim();
-    $("#code_input").val(Code);
-    $("#search_results").empty();
+  $("#resultados_busqueda").on("click", ".elemento_resultado", function() {
+    const codigoSeleccionado = $(this).text().trim();
+    $("#codigo_input").val(codigoSeleccionado);
+    $("#resultados_busqueda").empty();
 
     $.ajax({
-      url: `http://localhost:3000/php/busqueda_codigo.php?code=${Code}`,
+      url: `http://localhost:3000/php/buscar_codigo.php?codigo=${codigoSeleccionado}`,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
         if (data && data.length > 0) {
           const producto = data[0].Producto;
           const precio = data[0].Precio;
-          $("#product_input").val(producto);
-          $("#price_input").val(precio);
+          $("#producto_input").val(producto);
+          $("#precio_input").val(precio);
         }
       },
       error: function() {
@@ -59,42 +59,43 @@ $(document).ready(function() {
       }
     });
   });
-  $("#code_input").on("keydown", function(event) {
-    const resultsCount = $("#search_results").children("div").length;
-    const keyCode = event.keyCode;
 
-    if (keyCode === 40) { // Flecha hacia abajo
-      selectedIndex = (selectedIndex + 1) % resultsCount;
-      updateSelectedResult();
-    } else if (keyCode === 38) { // Flecha hacia arriba
-      selectedIndex = (selectedIndex - 1 + resultsCount) % resultsCount;
-      updateSelectedResult();
-    } else if (keyCode === 13) { // Tecla Enter
-      const selectedCode = $("#search_results").children("div").eq(selectedIndex).text().trim();
+  $("#codigo_input").on("keydown", function(event) {
+    const cantidadResultados = $("#resultados_busqueda").children(".elemento_resultado").length;
+    const teclaPresionada = event.keyCode;
+
+    if (teclaPresionada === 40) { // Flecha hacia abajo
+      indiceSeleccionado = (indiceSeleccionado + 1) % cantidadResultados;
+      actualizarResultadoSeleccionado();
+    } else if (teclaPresionada === 38) { // Flecha hacia arriba
+      indiceSeleccionado = (indiceSeleccionado - 1 + cantidadResultados) % cantidadResultados;
+      actualizarResultadoSeleccionado();
+    } else if (teclaPresionada === 13) { // Tecla Enter
+      const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
       event.preventDefault();
-      $("#code_input").val(selectedCode);
-      $("#search_results").empty();
+      $("#codigo_input").val(codigoSeleccionado);
+      $("#resultados_busqueda").empty();
       const inputCantidad = document.getElementById('cantidad_input');
       inputCantidad.focus();
     }
   });
 
-  function updateSelectedResult() {
-    $("#search_results").children("div").removeClass("selected");
-    $("#search_results").children("div").eq(selectedIndex).addClass("selected");
+  function actualizarResultadoSeleccionado() {
+    $("#resultados_busqueda").children(".elemento_resultado").removeClass("seleccionado");
+    $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).addClass("seleccionado");
 
-    const Code = $("#search_results").children("div").eq(selectedIndex).text().trim();
+    const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
 
     $.ajax({
-      url: `http://localhost:3000/php/busqueda_codigo.php?code=${Code}`,
+      url: `http://localhost:3000/php/buscar_codigo.php?codigo=${codigoSeleccionado}`,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
         if (data && data.length > 0) {
           const producto = data[0].Producto;
           const precio = data[0].Precio;
-          $("#product_input").val(producto);
-          $("#price_input").val(precio);
+          $("#producto_input").val(producto);
+          $("#precio_input").val(precio);
         }
       },
       error: function() {
@@ -104,29 +105,29 @@ $(document).ready(function() {
   }
 
   $(document).on("click", function(event) {
-    if (!$(event.target).closest("#search_results").length) {
-      $("#search_results").empty();
-      selectedIndex = -1;
+    if (!$(event.target).closest("#resultados_busqueda").length) {
+      $("#resultados_busqueda").empty();
+      indiceSeleccionado = -1;
     }
   });
 
   function guardarDatosEnAlmacenamientoLocal() {
-    const filas = $(".campo1").html();
+    const filas = $(".tabla-datos").html();
     localStorage.setItem("datosTabla", filas);
   }
 
-  $("input[type='submit']").on("click", function(event) {
+  $("#ingresar_producto").on("click", function(event) {
     event.preventDefault();
 
-    const codigo = $("#code_input").val().trim();
-    const producto = $("#product_input").val();
-    const precio = parseFloat($("#price_input").val());
+    const codigo = $("#codigo_input").val().trim();
+    const producto = $("#producto_input").val();
+    const precio = parseFloat($("#precio_input").val());
     const cantidad = parseInt($("#cantidad_input").val());
 
     if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
       const subtotal = precio * cantidad;
-      const fila0 = `
-        <tr class="tittle">
+      const filaEncabezado = `
+        <tr class="encabezado">
           <td>Código</td>
           <td>Producto</td>
           <td>Precio</td>
@@ -134,8 +135,8 @@ $(document).ready(function() {
           <td>Total</td>
         </tr>
       `;
-      const fila1 = `
-        <tr class="tabla-fila">
+      const filaDatos = `
+        <tr class="fila-datos">
           <td>${codigo}</td>
           <td>${producto}</td>
           <td>$${precio}</td>
@@ -143,23 +144,22 @@ $(document).ready(function() {
           <td>$${subtotal}</td>
         </tr>
       `;
-      $(".campo1").append(fila0);
-      $(".campo1").append(fila1);
+      $(".tabla-datos").append(filaEncabezado);
+      $(".tabla-datos").append(filaDatos);
 
-      $("#code_input").val("");
-      $("#product_input").val("");
-      $("#price_input").val("");
+      $("#codigo_input").val("");
+      $("#producto_input").val("");
+      $("#precio_input").val("");
       $("#cantidad_input").val("");
-      $("#search_results").empty();
-      selectedIndex = -1;
+      $("#resultados_busqueda").empty();
+      indiceSeleccionado = -1;
 
-      const inputCode = document.getElementById('code_input');
-      inputCode.focus();
+      const inputCodigo = document.getElementById('codigo_input');
+      inputCodigo.focus();
 
       guardarDatosEnAlmacenamientoLocal();
       
-      $("#total_input").val() = subtotal + subtotal;
-
+      $("#total_input").val(subtotal);
     } else {
       alert("Por favor, ingrese todos los campos correctamente.");
     }
@@ -168,7 +168,7 @@ $(document).ready(function() {
   function cargarDatosDesdeAlmacenamientoLocal() {
     const datosGuardados = localStorage.getItem("datosTabla");
     if (datosGuardados) {
-      $(".campo1").html(datosGuardados);
+      $(".tabla-datos").html(datosGuardados);
     }
   }
 
@@ -179,7 +179,9 @@ $(document).ready(function() {
   }
 
   $("#btnEliminar").on("click", function() {
-    $(".campo1").empty();
+    $(".tabla-datos").empty();
     eliminarDatosDelAlmacenamientoLocal();
   });
 });
+
+

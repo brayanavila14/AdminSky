@@ -3,8 +3,8 @@
 include("base-de-datos.php");
 
 // Obtener el valor de búsqueda del cliente
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];
+if (isset($_GET['consulta'])) {
+    $query = $_GET['consulta'];
 
     // Realizar la consulta en la base de datos
     $consulta1 = "SELECT Código FROM inventario WHERE Código LIKE '%$query%'";
@@ -21,9 +21,8 @@ if (isset($_GET['query'])) {
     echo json_encode($results);
 }
 
-// Obtener el código seleccionado del producto
-if (isset($_GET['code'])) {
-    $code = $_GET['code'];
+if (isset($_GET['codigo'])) {
+    $code = $_GET['codigo'];
 
     // Realizar la consulta en la base de datos para obtener el producto y el precio
     $consulta2 = "SELECT Producto, Precio FROM inventario WHERE Código = '$code' LIMIT 1";

@@ -11,30 +11,13 @@
     <div class="encabezado">
         <h2>Caja registradora</h2>
     </div>
-    <div class="campo2">
-        <div class="calculadora">
-            <div class="boton">7</div>
-            <div class="boton">8</div>
-            <div class="boton">9</div>
-            <div class="boton">4</div>
-            <div class="boton">5</div>
-            <div class="boton">6</div>
-            <div class="boton">1</div>
-            <div class="boton">2</div>
-            <div class="boton">3</div>
-            <div class="boton">0</div>
-            <div class="boton">.</div>
-            <div class="boton">ENTER</div>
-        </div>
-    </div>
-    
     <form  method="post" class="inputs">
-        <input id="code_input" type="text" placeholder="Código" maxlength="5" autocomplete="off">
-        <div id="search_results"></div>
-        <input id="product_input" type="text" placeholder="Producto" disabled>
-        <input id="price_input" type="number" placeholder="Precio" disabled>
+        <input id="codigo_input" type="text" placeholder="Código" maxlength="5" autocomplete="off">
+        <div id="resultados_busqueda"></div>
+        <input id="producto_input" type="text" placeholder="Producto" disabled>
+        <input id="precio_input" type="number" placeholder="Precio" disabled>
         <input id="cantidad_input" type="number" placeholder="Cantidad" autocomplete="off">
-        <input type="submit" value="Ingresar">
+        <input id="ingresar_producto" type="submit" value="Ingresar">
     </form>
     <button id="btnEliminar" type="button">Eliminar tabla</button>
     <div class="campo1">
@@ -46,4 +29,5 @@
     <script src="../js/caja_registradora.js"></script>
 </body>
 </html>
+
 
