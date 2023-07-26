@@ -14,11 +14,11 @@
         </div>
         <div class="calculator">
             <form method="post" class="inputs">
-                <input id="codigo_input" type="text" placeholder="Código" maxlength="5" autocomplete="off">
+                <input id="codigo_input" type="number" placeholder="Código" maxlength="5" autocomplete="off">
                 <div id="resultados_busqueda"></div>
                 <input id="producto_input" type="text" placeholder="Producto" disabled>
-                <input id="precio_input" type="number" placeholder="Precio" disabled>
                 <input id="cantidad_input" type="number" placeholder="Cantidad" autocomplete="off">
+                <input id="precio_input" type="number" placeholder="Precio" disabled>
                 <button id="ingresar_producto" type="submit">Ingresar</button>
             </form>
             <div class="table-container">
@@ -32,11 +32,18 @@
                     </tr>
                 </table>
             </div>
-            <div class="total">
-                <input id="total_input" type="number" disabled>
+           
+        </div>
+        <div class="footer">
+            <input id="total_input" type="number" disabled>
+            <input type="text" id="num_factura" disabled>
+            <input type="number" id="pago_input" placeholder="Monto del Pago">
+            <div class="botones">
+                <button id="btnLimpiar" type="button">Limpiar</button>
+                <button id="btnCancelar" type="button">Cancelar Pedido</button>
+                <button id="btnRegistrar" type="button">Registrar Pedido</button>
             </div>
         </div>
-        <button id="btnEliminar" type="button">Eliminar tabla</button>
     </div>
     <script src="../library/jquery-3.7.0.js"></script>
     <script src="../js/caja_registradora.js"></script>

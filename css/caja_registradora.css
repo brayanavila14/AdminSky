@@ -1,26 +1,27 @@
+/* Estilos generales */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: monospace, Arial;
 }
-
 body {
     width: 100%;
     height: 100%;
     background-color: #f2f8ff;
 }
-
+/* Estilos del contenedor principal */
 .container {
     position: relative;
     width: 90%;
     max-width: 800px;
+    height: 580px;
     margin: 20px auto;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+/* Estilos del encabezado */
 .header {
     background-color: #4276b8;
     padding: 20px;
@@ -29,142 +30,140 @@ body {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-
 .header h2 {
     font-size: 30px;
 }
-
+/* Estilos de la calculadora */
 .calculator {
     padding: 20px;
 }
-
-.calculator .inputs {
+.inputs {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
+    grid-template-columns: repeat(3 , 1fr);
     gap: 10px;
     align-items: center;
     margin-bottom: 20px;
 }
-
-.calculator .inputs input {
+.inputs input {
     height: 40px;
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
-
-.calculator #codigo_input {
-    grid-column: span 2;
+#codigo_input {
+    grid-column: 1;
 }
-
-.calculator #resultados_busqueda {
-    grid-column: span 2;
-    position: relative;
-}
-
-.calculator #resultados_busqueda::before {
-    content: '';
+#resultados_busqueda {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 31%;
+    top: 37%;
     background-color: #f2f8ff;
-    z-index: -1;
+    border-radius: 5px;
+    z-index: 1;
 }
-
-.calculator #resultados_busqueda::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-}
-
-.calculator #resultados_busqueda .elemento_resultado {
+#resultados_busqueda .elemento_resultado {
     padding: 10px;
     cursor: pointer;
 }
-
-.calculator #resultados_busqueda .elemento_resultado:hover {
+#resultados_busqueda .elemento_resultado:hover {
     background-color: #f2f8ff;
 }
-
-.calculator #producto_input, .calculator #precio_input {
+#producto_input, #precio_input {
     grid-column: span 2;
 }
-
-.calculator #ingresar_producto {
+#cantidad_input {
+    grid-column: 1;
+}
+#ingresar_producto {
     background-color: #4d85c9;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
+    grid-column: span 3;
+    margin: 0 30% 0 30%;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     transition: background-color 0.3s ease-in-out;
 }
-
-.calculator #ingresar_producto:hover {
+#ingresar_producto:hover {
     background-color: #3e6a9f;
 }
-
-.calculator .table-container {
+/* Estilos de la tabla */
+.table-container {
     overflow: auto;
+    width: 100%;
+    max-height: max-content;
 }
-
 .calculator table {
     width: 100%;
     border-collapse: collapse;
 }
-
-.calculator table tr th, .calculator table tr td {
+.calculator table tr th{
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ccc;
-}
-
-.calculator table tr th {
     background-color: #4276b8;
     color: #f2f8ff;
 }
-
-.calculator table tr td {
-    color: #333;
+/* Estilos del pie de página */
+/* Estilos del footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f8ff;
+    padding: 10px;
+    border-top: 1px solid #ccc;
 }
-
-.calculator .total {
-    text-align: right;
-    margin-top: 10px;
-}
-
-.calculator .total input {
-    width: 100px;
-    padding: 5px;
+.footer input {
+    height: 30px;
+    padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
+}
+.footer input {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.footer input {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-#btnEliminar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+.botones button {
     background-color: #4d85c9;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
     transition: background-color 0.3s ease-in-out;
 }
 
-#btnEliminar:hover {
+.botones button:hover {
     background-color: #3e6a9f;
 }
+
+#btnLimpiar {
+    background-color: #e57373;
+    color: #fff;
+}
+
+#btnLimpiar:hover {
+    background-color: #d32f2f;
+}
+
