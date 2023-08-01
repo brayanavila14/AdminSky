@@ -59,11 +59,9 @@ $(document).ready(function() {
       }
     });
   });
-
   $("#codigo_input").on("keydown", function(event) {
     const cantidadResultados = $("#resultados_busqueda").children(".elemento_resultado").length;
     const teclaPresionada = event.keyCode;
-
     if (teclaPresionada === 40) { // Flecha hacia abajo
       indiceSeleccionado = (indiceSeleccionado + 1) % cantidadResultados;
       actualizarResultadoSeleccionado();
@@ -79,13 +77,10 @@ $(document).ready(function() {
       inputCantidad.focus();
     }
   });
-
   function actualizarResultadoSeleccionado() {
     $("#resultados_busqueda").children(".elemento_resultado").removeClass("seleccionado");
     $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).addClass("seleccionado");
-
     const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
-
     $.ajax({
       url: `http://localhost:3000/php/buscar_codigo.php?codigo=${codigoSeleccionado}`,
       method: 'GET',
@@ -103,14 +98,12 @@ $(document).ready(function() {
       }
     });
   }
-
   $(document).on("click", function(event) {
     if (!$(event.target).closest("#resultados_busqueda").length) {
       $("#resultados_busqueda").empty();
       indiceSeleccionado = -1;
     }
   });
-
   function guardarDatosEnAlmacenamientoLocal() {
     const filas = $(".tabla-datos").html();
     localStorage.setItem("datosTabla", filas);

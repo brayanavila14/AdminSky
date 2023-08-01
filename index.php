@@ -14,7 +14,6 @@
             <input id="input-usuario" type="number" placeholder="Usuario(numero de identificación)" name="username" autocomplete="off">
             <input id="input-password" type="password" placeholder="Codigo" name="code" autocomplete="off">
             <img id="eye-password" src="imagenes/ojo-ver.png"></img>
-
             <input type="submit" name="ingresar" value="Ingresar">
         </form>
     </div>
