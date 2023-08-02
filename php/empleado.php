@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-
-if (!$_SESSION['Usuario']) {
-    header("Location: ../index.php");
-    exit;
-
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +18,6 @@ if (!$_SESSION['Usuario']) {
         <h1 class="tittle arrays3">Apellidos</h1>
     </div>
     <?php
-    session_start();
     include("base-de-datos.php");
     
     // Consulta para obtener los registros de empleados de la tabla personal

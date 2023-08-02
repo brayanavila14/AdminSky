@@ -52,15 +52,15 @@ body {
 .inventario{
     width: 100%;
     font-size: 180%;
-  
+    border-collapse: collapse;
 }
 .columns{
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 .extra{
     cursor: pointer;
-    margin: 3px 0 1px 0;
+    margin: 3px 0 1px;
     padding: 0;
 }
 .mensaje-error {

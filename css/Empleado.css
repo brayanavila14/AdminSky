@@ -52,7 +52,7 @@ body {
 .empleados{
     width: 100%;
     font-size: 180%;
-  
+    border-collapse: collapse;
 }
 .columns{
     text-align: center;
