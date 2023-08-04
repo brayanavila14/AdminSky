@@ -33,13 +33,13 @@ if (!$_SESSION['Usuario']) {
                 <img src="../imagenes/inventario.png" alt="">
                 <h5>Inventario</h5>
             </a>
-            <a class="opcion" href="credito.php">
-                <img src="../imagenes/credito.png" alt="">
-                <h5>Créditos</h5>
-            </a>
             <a class="opcion" href="empleado.php">
                 <img src="../imagenes/empleado.png" alt="">
                 <h5>Empleados</h5>
+            </a>
+            <a class="opcion" href="credito.php">
+                <img src="../imagenes/credito.png" alt="">
+                <h5>Créditos</h5>
             </a>
             <a class="opcion" href="movimientos.php">
                 <img src="../imagenes/movimientos.png" alt="">
