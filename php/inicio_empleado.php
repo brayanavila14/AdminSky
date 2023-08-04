@@ -1,18 +1,3 @@
-<?php
-session_start();
-
-
-if (!$_SESSION['Usuario']) {
-    header("Location: ../index.php");
-    exit;
-
-    // Verificar si existe un mensaje en la variable de sesión
-} elseif (isset($_SESSION['mensaje'])) {
-    echo $_SESSION['mensaje'];
-    unset($_SESSION['mensaje']); // Limpiar el mensaje de la variable de sesión para que no se muestre nuevamente en futuras visitas
-    }
-    
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

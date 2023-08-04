@@ -37,16 +37,16 @@ body {
     padding: 5px;  
     text-align: center;
 }
-.arrays0{
+.product-code{
     width: calc(16% + 5px);
 }
-.arrays1{
+.product-name{
     width: 51%;
 }   
-.arrays2{
+.product-price{
     width: 16.5%;
 }
-.arrays3{
+.product-quantity{
     width: 5.4%;
 }
 .inventario{

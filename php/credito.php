@@ -2,22 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contabilidad de Créditos</title>
     <link rel="stylesheet" href="../css/credito.css">
-    <title>Créditos - AdminSky</title>
 </head>
 <body>
-    <div class="campo1"></div>
-    <div class="encabezado">
-        <h2>Créditos</h2>
-    </div> 
-    <div class="campo2">
-        <div class="credito">
-            <h2 class="deudor">brayan</h2>
-            <div class="monto">$1.200.000</div>
-            <div class="f_limite">01/01/2024</div>
-            <p class="f_inicio">01/01/2023</p>
-        </div>
-    </div>
+    <header>
+        <h1>Contabilidad de Créditos</h1>
+    </header>
+    <main>
+        <section class="creditos">
+            <!-- Agrega este formulario en tu HTML -->
+            <form action="crear_cuenta.php" method="post">
+                <input type="number" name="numberId" placeholder="C.C." maxlength="10">
+                <input type="text" name="name" placeholder="Nombre">
+                <input type="email" name="email" placeholder="Email">
+                <input type="text" name="direccion" placeholder="Dirección">
+                <input type="submit" name="crearCuenta" value="Crear cuenta">
+            </form>
+        </section>
+        <section class="registros">
+            <!-- Aquí puedes mostrar los créditos registrados en una tabla -->
+            <!-- Puedes utilizar JavaScript para llenar la tabla dinámicamente -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy;2023 AdminSky | Todos los derechos reservados</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <?php
+        include('base-de-datos.php');
+    ?>
 </body>
 </html>
+
