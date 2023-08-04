@@ -7,9 +7,9 @@ if (!$_SESSION['Usuario']) {
     exit;
 
     // Verificar si existe un mensaje en la variable de sesión
-} elseif (isset($_SESSION['mensaje'])) {
-    echo $_SESSION['mensaje'];
-    unset($_SESSION['mensaje']); // Limpiar el mensaje de la variable de sesión para que no se muestre nuevamente en futuras visitas
+} elseif (isset($_SESSION['Mensaje'])) {
+    echo $_SESSION['Mensaje'];
+    unset($_SESSION['Mensaje']); // Limpiar el mensaje de la variable de sesión para que no se muestre nuevamente en futuras visitas
     }
 ?>
 
