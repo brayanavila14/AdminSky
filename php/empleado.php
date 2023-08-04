@@ -35,7 +35,6 @@
             $name = $fila['Nombre'];
             $second_name = $fila['Segundo nombre (opcional)'];
             $last_name = $fila['Apellidos'];
-
             echo '<tr>';
             echo '<td class="columns">' . $IDnumber . '</td>';
             echo '<td class="columns">' . $name . '</td>';
@@ -44,7 +43,6 @@
             echo '<td class="columns"><img src="../imagenes/tres-puntos.png" alt=":" class="extra"></td>';
             echo '</tr>';
         }
-
         echo '</table>';
     } else {
         echo '<h1 class="mensaje-error">No hay empleados registrados</h1>';

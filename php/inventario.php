@@ -22,6 +22,8 @@
     $consulta_inventario = "SELECT Código, Producto, Precio, Cantidad FROM inventario";
     $resultado_inventario = mysqli_query($conexion, $consulta_inventario);
     if (mysqli_num_rows($resultado_inventario) > 0) {
+        // Mostrar los datos en una tabla
+        echo '<table class="inventario">';
         while ($fila = mysqli_fetch_assoc($resultado_inventario)) {
             $code = $fila['Código'];
             $nombre = $fila['Producto'];
@@ -35,6 +37,7 @@
             echo '<td class="columns"><img src="../imagenes/tres-puntos.png" alt=":" class="extra"></td>';
             echo '</tr>';
         }
+        echo '</table>';
     } else {
         echo '<h1 class="mensaje-error">No hay productos en el inventario.</h1>';
     }
