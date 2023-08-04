@@ -32,7 +32,12 @@ body {
     background-color: #d3e0f5;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
-
+.opciones h2{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 30px;
+    color: #00000070;
+}
 .opcion {
     display: flex;
     flex-direction: column;
@@ -52,8 +57,8 @@ body {
     margin-bottom: 15px;
 }
 
-.opcion span {
-    font-size: 18px;
+.opcion h5 {
+    font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
     text-align: center;
