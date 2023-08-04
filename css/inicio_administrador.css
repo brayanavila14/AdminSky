@@ -4,95 +4,63 @@
     box-sizing: border-box;
     font-family: cuerpo;
 }
+
 @font-face {
     font-family: cuerpo;
     src: url(../fuentes/BrunoAceSC-Regular.ttf);
 }
+
 body {
     width: 100%;
     height: 100%;
     background-color: #f2f8ff;
 }
+
 .contenedor {
-    background-color: #aecefa;
-    width: 40%;
-    margin: 5% auto;
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.opciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
     border-radius: 20px;
+    background-color: #d3e0f5;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
-.opciones {
+
+.opcion {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.opcion {
     text-decoration: none;
     color: black;
-    margin: 25px;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     background-color: #82a2c9;
     box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
-    height: 30px;
-    width: 80%;
+    transition: transform 0.3s ease-in-out;
 }
+
 .opcion img {
-    width: 30px;
-    height: 30px;
-    float: left;
-    margin-top: -15px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
 }
-.opcion h5 {
-    font-size: 16px;
+
+.opcion span {
+    font-size: 18px;
+    font-weight: bold;
     letter-spacing: 2px;
-    margin-top: -10px;
+    text-align: center;
 }
+
 .opcion:hover {
-    transform: scale(1.05);
-    transition: 0.8s;
+    transform: translateY(-5px);
     background-color: #f2f8ffd0;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
-}
-@keyframes saltar {
-0% {
-    transform: translateY(0);
-}
-50% {
-    transform: translateY(8px);
-}
-100% {
-    transform: translateY(0);
-}
-}
-.mensaje-exito {
-    position: fixed;
-    top: 5%;
-    left: 32%;
-    width: 36%;
-    text-align: center;
-    background-color: #C2E5FF;
-    color: #38b759;;
-    border: 1px solid #38b759;;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    opacity: 1;
-    transition: opacity 3s ease-in-out, transform 3s ease-in-out;
-    animation: saltar 3s ease-in-out;
-    animation-fill-mode: forwards;
-}
-@keyframes saltar {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(8px);
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 0;
-    }
 }

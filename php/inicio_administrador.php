@@ -12,7 +12,6 @@ if (!$_SESSION['Usuario']) {
     unset($_SESSION['Mensaje']); // Limpiar el mensaje de la variable de sesión para que no se muestre nuevamente en futuras visitas
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,22 +25,26 @@ if (!$_SESSION['Usuario']) {
     <div class="contenedor">
         <div class="opciones">
             <h2>Opciones</h2>
-                <a class="opcion" href="caja_registradora.php">
-                    <img src="../imagenes/caja-registradora.png">
-                    <h5>Caja registradora</h5>
-                <a  class="opcion" href="inventario.php">
-                    <img src="../imagenes/inventario.png">
-                    <h5>Inventario</h5>
-                </a>
-                </a>
-                <a class="opcion" href="credito.php">
-                    <img src="../imagenes/credito.png" alt="">
-                    <h5>Créditos</h5>
-                </a>
-                <a class="opcion" href="empleado.php">
-                    <img src="../imagenes/empleado.png" alt="">
-                    <h5>Empleados</h5>
-                </a>
+            <a class="opcion" href="caja_registradora.php">
+                <img src="../imagenes/caja-registradora.png" alt="">
+                <h5>Caja registradora</h5>
+            </a>
+            <a class="opcion" href="inventario.php">
+                <img src="../imagenes/inventario.png" alt="">
+                <h5>Inventario</h5>
+            </a>
+            <a class="opcion" href="credito.php">
+                <img src="../imagenes/credito.png" alt="">
+                <h5>Créditos</h5>
+            </a>
+            <a class="opcion" href="empleado.php">
+                <img src="../imagenes/empleado.png" alt="">
+                <h5>Empleados</h5>
+            </a>
+            <a class="opcion" href="movimientos.php">
+                <img src="../imagenes/movimientos.png" alt="">
+                <h5>Movimientos</h5>
+            </a>
         </div>
     </div>
 </body>
