@@ -2,39 +2,32 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: monospace;
-}
-@font-face {
-    font-family: especial;
-    src: url(../fuentes/BrunoAceSC-Regular.ttf);
+    font-family: Arial, sans-serif;
 }
 body {
-    width: 100%;
-    height: 100%;
     background-color: #f2f8ff;
 }
 .contenedor {
     background-color: #aecefa;
-    width: 40%;
+    width: 40vw;
     height: 60vh;
     margin: 8% auto;
-    padding: 25px;
+    padding: 2%;
     text-align: center;
     border-radius: 20px;
     box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.4);
-   
 }
 .contenedor h1 {
     font-family: 'Brush Script MT', cursive;
-    font-size: 400%;
+    font-size: 380%;
     color: rgba(255, 255, 255, 0.8);
-    text-shadow: 2px 2px 4px #00000088;
+    text-shadow: 2px 2px 4px #00000099;
     letter-spacing: 2px;
-    margin: 10px 0 10px 0;
+    margin: 1% 0 1% 0;
 }
 .contenedor input {
-    margin: 4% auto ;
-    padding: 10px;
+    margin: 4% auto;
+    padding: 2%;
     font-size: 150%;
     border-radius: 10px;
     width: 80%;
@@ -44,10 +37,10 @@ body {
 #eye-password{
     cursor: pointer;
     position: absolute;
-    top: calc(52% + 5px);
-    right: calc(36% + 5px);
-    width: 28px;
-    height: 30px;
+    top: 51.4%;
+    right: 37%;
+    width: 2.5vw;
+    height: 6vh;
 }
 ::-webkit-inner-spin-button{
     display: none;
@@ -57,6 +50,7 @@ input[type="number"]:hover, input[type="password"]:hover {
     transition: .3s;
 }
 input[type="submit"] {
+    font-family: cursive;
     background-color: #4d85c9;
     border-radius: 20px;
     width: 50%;
@@ -71,16 +65,16 @@ input[type="submit"]:hover{
     transform: scale(1.04);
     transition: 0.7s;
 }
-.mensaje-error{
+.mensaje-exito{
     position: fixed;
     top: 22%;
     left: 35%;
     width: 30%;
     height: 10%;
     text-align: center;
-    background-color: rgba(255, 32, 32, 0.9) ;
-    color: #C2E5FF;
-    border: 1px solid rgba(255, 0, 0, 0.6);
+    background-color: rgba(50, 255, 32, 0.747) ;
+    color: #1c9bfcd5;
+    border: 1px solid rgba(0, 0, 0, 0.493);
     font-size: 150%;
     padding: 15px;
     border-radius: 10px;

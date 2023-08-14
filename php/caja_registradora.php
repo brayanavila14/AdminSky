@@ -31,8 +31,7 @@
                         <th>Total</th>
                     </tr>
                 </table>
-            </div>
-           
+            </div> 
         </div>
         <div class="footer">
             <input id="total_input" type="number" disabled>
