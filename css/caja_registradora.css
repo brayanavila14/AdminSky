@@ -1,59 +1,67 @@
-/* Estilos generales */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: monospace, Arial;
+    font-family: Arial, sans-serif;
 }
 body {
     width: 100%;
     height: 100%;
     background-color: #f2f8ff;
 }
-/* Estilos del contenedor principal */
-.container {
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    height: 580px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* Estilos del encabezado */
-.header {
+header {
     background-color: #4276b8;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-    color: #f2f8ff;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 34px;
+    color: #ffffffbb;
 }
-.header h2 {
-    font-size: 30px;
-}
-/* Estilos de la calculadora */
-.calculator {
+#contenedor{
+    background-color: #ccc;
+    width: 90vw;
+    height: 20vh;
+    margin: 1% auto;
     padding: 20px;
-}
-.inputs {
+    border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(3 , 1fr);
     gap: 10px;
     align-items: center;
     margin-bottom: 20px;
 }
-.inputs input {
+::-webkit-inner-spin-button{
+    display: none;
+}
+#contenedor input{
+    background-color: #ffffff;
+    border: 0;
     height: 40px;
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 16px; 
 }
-#codigo_input {
-    grid-column: 1;
+#contenedor input[type="submit"]{
+    background-color: #4d85c9;
+    color: #fff;
+    font-family: cursive;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
 }
+#contenedor input[type="submit"]:hover{
+    background-color: #3e6a9f;
+    transform: scale(1.01);
+    transition: 1200ms;
+}
+#producto_input {
+    grid-column: span 2;
+}
+
+
 #resultados_busqueda {
     position: absolute;
     width: 31%;
@@ -69,101 +77,69 @@ body {
 #resultados_busqueda .elemento_resultado:hover {
     background-color: #f2f8ff;
 }
-#producto_input, #precio_input {
-    grid-column: span 2;
-}
-#cantidad_input {
-    grid-column: 1;
-}
-#ingresar_producto {
+#encabezado{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
     background-color: #4d85c9;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    grid-column: span 3;
-    margin: 0 30% 0 30%;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease-in-out;
+    height: 3em;
+    padding: 6px 0;
+
 }
-#ingresar_producto:hover {
-    background-color: #3e6a9f;
-}
-/* Estilos de la tabla */
-.table-container {
+main{
     overflow: auto;
-    width: 100%;
     max-height: max-content;
 }
-.calculator table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.calculator table tr th{
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
+footer{
     background-color: #4276b8;
-    color: #f2f8ff;
-}
-/* Estilos del pie de página */
-/* Estilos del footer */
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f2f8ff;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-}
-.footer input {
-    height: 30px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.footer input {
-    height: 30px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.footer input {
-    height: 30px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5em;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(10 , 1fr);
+    gap: 10px;
 }
 
-.botones button {
+#t-pago{
+    grid-column: 7;
+}
+#m-pago{
+    grid-column: 8;
+    background-color: white;
+}
+#opciones-pago{
+    display: none;
+}
+#confirmar_button, #limpiar_button{
     background-color: #4d85c9;
     color: #fff;
-    font-size: 14px;
+    border: 0;
+    font-family: cursive;
+    font-size: 18px;
     font-weight: bold;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
+    letter-spacing: 2px;
     cursor: pointer;
-    margin-right: 10px;
-    transition: background-color 0.3s ease-in-out;
 }
-
-.botones button:hover {
+#confirmar_button{
+    grid-column: 9;
+}
+#limpiar_button{
+    grid-column: 10;
+}
+#Volver{
+    position: absolute;
+    left: 5%;
+    height: 30px;
     background-color: #3e6a9f;
-}
+    border: 1px black solid;
+    font-family: cursive;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 0 10px;
+    border-radius: 5px;
 
-#btnLimpiar {
-    background-color: #e57373;
-    color: #fff;
 }
-
-#btnLimpiar:hover {
-    background-color: #d32f2f;
-}
-

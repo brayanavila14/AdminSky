@@ -8,44 +8,34 @@
     <title>Caja registradora - AdminSky</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Caja registradora</h2>
+    <header><input id="Volver" type="button" value="Volver">Caja registradora</header>
+    <section id="contenedor">
+        <input id="codigo_input" type="number" placeholder="Código"><input id="producto_input" type="text" placeholder="Producto" disabled>
+        <input type="text" placeholder="Precio" disabled><input type="number" placeholder="Cantidad">
+        <input type="submit" value="Ingresar">
+    </section>
+    <section id="encabezado">
+            <h2>Código</h2>
+            <h2>Producto</h2>
+            <h2>Precio</h2>
+            <h2>Cantidad</h2>
+            <h2>Total</h2>
+    </section>
+    <main>
+        
+    </main>
+    <footer>
+        <input id="t-pago" type="number" placeholder="Monto total" disabled>
+        <div id="m-pago">metodo de pago</div>
+        <div id="opciones-pago">
+            <p>Efectivo</p>
+            <p>Pago electronico</p>
         </div>
-        <div class="calculator">
-            <form method="post" class="inputs">
-                <input id="codigo_input" type="number" placeholder="Código" maxlength="5" autocomplete="off">
-                <div id="resultados_busqueda"></div>
-                <input id="producto_input" type="text" placeholder="Producto" disabled>
-                <input id="cantidad_input" type="number" placeholder="Cantidad" autocomplete="off">
-                <input id="precio_input" type="number" placeholder="Precio" disabled>
-                <button id="ingresar_producto" type="submit">Ingresar</button>
-            </form>
-            <div class="table-container">
-                <table class="tabla-datos">
-                    <tr class="encabezado">
-                        <th>Código</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                    </tr>
-                </table>
-            </div> 
-        </div>
-        <div class="footer">
-            <input id="total_input" type="number" disabled>
-            <input type="text" id="num_factura" disabled>
-            <input type="number" id="pago_input" placeholder="Monto del Pago">
-            <div class="botones">
-                <button id="btnLimpiar" type="button">Limpiar</button>
-                <button id="btnCancelar" type="button">Cancelar Pedido</button>
-                <button id="btnRegistrar" type="button">Registrar Pedido</button>
-            </div>
-        </div>
-    </div>
+        <input id="confirmar_button" type="submit" value="Confirmar"><input id="limpiar_button" type="submit" value="Limpiar">
+    </footer>
     <script src="../library/jquery-3.7.0.js"></script>
     <script src="../js/caja_registradora.js"></script>
+    
 </body>
 </html>
 
