@@ -3,7 +3,7 @@ $(document).on('ready', function(){
     $("#codigo_input").on('input', function(){
         let code = $(this).val().trim();
         let temporizador;
-        clearTimeout(temporizador);
+        
         if (code.length > 0) {
             temporizador = setTimeout(function() {
             $.ajax({
@@ -22,7 +22,7 @@ $(document).on('ready', function(){
                 console.error('Error en la solicitud AJAX');
                 }
             });
-            }, 100);
+            }, 300);
         } else {
             $("#resultado").empty();
         }

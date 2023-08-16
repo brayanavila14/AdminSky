@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("php/base-de-datos.php");
+include("base-de-datos.php");
 
 if (isset($_POST['ingresar'])) {
     $username = trim($_POST['username']);

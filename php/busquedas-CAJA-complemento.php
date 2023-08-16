@@ -11,7 +11,7 @@ if (isset($_GET['code'])) {
     $lista_codigos = array();
 
     // Recorrer los resultados y agregarlos al array
-    while ($fila_codigos = mysqli_fetch_assoc($resultado_codigo)) {
+    while ($fila_codigos  = mysqli_fetch_assoc($resultado_codigo)) {
         $lista_codigos[] = $fila_codigos;
     }
     // Devolver los resultados en formato JSON
