@@ -1,29 +1,30 @@
 $(document).on('ready', function(){
     //$("#")
-    $("#codigo_input").on(input, function(){
-        let consulta = $(this).val().trim();
-        clearTimeout = temporizador
-        if (consulta.length > 0) {
+    $("#codigo_input").on('input', function(){
+        let code = $(this).val().trim();
+        let temporizador;
+        clearTimeout(temporizador);
+        if (code.length > 0) {
             temporizador = setTimeout(function() {
             $.ajax({
-                url: `http://localhost:3000/php/buscar_codigo.php?consulta=${consulta}`,
+                url: `http://localhost:3000/php/busquedas-CAJA-complemento.php?code=${code}`,
                 method: 'GET',
                 dataType: 'json',
-                success: function(resultados) {
-                $("#resultados_busqueda").empty();
-                resultados.forEach(function(resultado) {
-                    const elementoResultado = $("<div>").text(resultado.Código);
+                success: function(lista_codigos) {
+                $("#resultado").empty();
+                lista_codigos.forEach(function(lista_codigos) {
+                    const elementoResultado = $("<div>").text(lista_codigos.Código);
                     elementoResultado.addClass("elemento_resultado");
-                    $("#resultados_busqueda").append(elementoResultado);
+                    $("#resultado").append(elementoResultado);
                 });
                 },
                 error: function() {
                 console.error('Error en la solicitud AJAX');
                 }
             });
-            }, 200);
+            }, 100);
         } else {
-            $("#resultados_busqueda").empty();
+            $("#resultado").empty();
         }
-        });
-})
+    });
+});
