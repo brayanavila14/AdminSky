@@ -10,7 +10,8 @@
 <body>
     <header><input id="Volver" type="button" value="Volver">Caja registradora</header>
     <section id="contenedor">
-        <input id="codigo_input" type="number" placeholder="Código"><input id="producto_input" type="text" placeholder="Producto" disabled>
+        <input id="codigo_input" type="number" placeholder="Código"><div id="c">contenido</div>
+        <input id="producto_input" type="text" placeholder="Producto" disabled>
         <input type="text" placeholder="Precio" disabled><input type="number" placeholder="Cantidad">
         <input type="submit" value="Ingresar">
     </section>

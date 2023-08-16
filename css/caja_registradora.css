@@ -61,20 +61,23 @@ header {
     grid-column: span 2;
 }
 
-
-#resultados_busqueda {
+#resultado{
     position: absolute;
-    width: 31%;
-    top: 37%;
-    background-color: #f2f8ff;
+    width: 28.5%;
+    top: 21%;
+    background-color: #ccc;
+    padding: 0 10px;
     border-radius: 5px;
+    font-size: 16px;
+    max-height: 6em;
+    overflow: auto;
     z-index: 1;
 }
-#resultados_busqueda .elemento_resultado {
+#resultado .elemento_resultado {
     padding: 10px;
     cursor: pointer;
 }
-#resultados_busqueda .elemento_resultado:hover {
+.elemento_resultado:hover {
     background-color: #f2f8ff;
 }
 
