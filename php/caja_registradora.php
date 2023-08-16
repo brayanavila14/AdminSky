@@ -22,15 +22,16 @@
             <h2>Total</h2>
     </section>
     <main>
-        
+    
+
     </main>
     <footer>
         <input id="t-pago" type="number" placeholder="Monto total" disabled>
-        <div id="m-pago">metodo de pago</div>
-        <div id="opciones-pago">
-            <p>Efectivo</p>
-            <p>Pago electronico</p>
-        </div>
+        <label for="m-pago">método de pago:</label>
+        <select id="m-pago" name="metodoPago">
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia</option>
+        </select>
         <input id="confirmar_button" type="submit" value="Confirmar"><input id="limpiar_button" type="submit" value="Limpiar">
     </footer>
     <script src="../library/jquery-3.7.0.js"></script>
