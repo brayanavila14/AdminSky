@@ -2,8 +2,6 @@ $(document).on('ready', function(){
     //$("#")
     $("#codigo_input").on('input', function(){
         let code = $(this).val().trim();
-        let temporizador;
-        
         if (code.length > 0) {
             temporizador = setTimeout(function() {
             $.ajax({
@@ -11,7 +9,6 @@ $(document).on('ready', function(){
                 method: 'GET',
                 dataType: 'json',
                 success: function(lista_codigos) {
-                $("#resultado").empty();
                 lista_codigos.forEach(function(lista_codigos) {
                     const elementoResultado = $("<div>").text(lista_codigos.Código);
                     elementoResultado.addClass("elemento_resultado");
