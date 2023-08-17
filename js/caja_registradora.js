@@ -1,9 +1,10 @@
-$(document).on('ready', function(){
+$(document).ready(function(){
     //$("#")
     $("#codigo_input").on('input', function(){
         let code = $(this).val().trim();
+
         if (code.length > 0) {
-            temporizador = setTimeout(function() {
+    temporizador = setTimeout(function() {
             $.ajax({
                 url: `http://localhost:3000/php/busquedas-CAJA-complemento.php?code=${code}`,
                 method: 'GET',

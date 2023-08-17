@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/caja_registradora.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../library/jquery-3.7.0.js"></script>
     <title>Caja registradora - AdminSky</title>
 </head>
 <body>
