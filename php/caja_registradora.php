@@ -17,11 +17,13 @@
         <input type="submit" value="Ingresar">
     </section>
     <section id="encabezado">
-            <h2>Código</h2>
-            <h2>Producto</h2>
-            <h2>Precio</h2>
-            <h2>Cantidad</h2>
-            <h2>Total</h2>
+        <h2>Items</h2>
+        <h2>Código</h2>
+        <h2>Descripción</h2>
+        <h2>Empaque</h2>
+        <h2>Precio</h2>
+        <h2>Cantidad</h2>
+        <h2>Total</h2>
     </section>
     <main></main>
     <footer>
