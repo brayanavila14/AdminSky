@@ -1,43 +1,49 @@
 $(document).ready(function() {
-    let indiceSeleccionado = -1;
   
-    function actualizarResultados() {
-      let temporizador;
+  let indiceSeleccionado = 0;
   
-      $("#codigo_input").on('input', function() {
-        const consulta = $(this).val().trim();
-  
-        clearTimeout(temporizador);
-  
-        if (consulta.length > 0) {
-          temporizador = setTimeout(function() {
-            $.ajax({
-              url: `http://localhost:3000/php/buscar_codigo.php?consulta=${consulta}`,
-              method: 'GET',
-              dataType: 'json',
-              success: function(resultados) {
-                $("#resultados_busqueda").empty();
-  
-                resultados.forEach(function(resultado) {
-                  const elementoResultado = $("<div>").text(resultado.Código);
-                  elementoResultado.addClass("elemento_resultado");
-                  $("#resultados_busqueda").append(elementoResultado);
-                });
-              },
-              error: function() {
-                console.error('Error en la solicitud AJAX');
-              }
-            });
-        }, 200);
+  function actualizarResultados() {
+    
+    let temporizador;
+    
+    $("#codigo_input").on('input', function() {
+      
+      let codigo = $(this).val().trim();
+      
+      clearTimeout(temporizador);
+      
+      if (consulta.length > 1) {
+        
+        temporizador = setTimeout(function() {
+          
+          $.ajax({
+            url: `http://localhost:3000/php/busquedas-complemento.php?codigo=${codigo}`,
+            method: 'GET',
+            dataType: 'json',
+            
+            success: function() {
+              
+              $("#resultados_busqueda").empty();
+              $("#resultados_busqueda").forEach(function(lista_codigos) {
+                const elementoResultado = $("<div>").text(lista_codigos.Código);
+                elementoResultado.addClass("elemento_resultado");
+                $("#resultados_busqueda").append(elementoResultado);
+              });
+            },
+            error: function() {
+              console.error('Error en la solicitud AJAX');
+            }
+          });
+        }, 300);
       } else {
         $("#resultados_busqueda").empty();
       }
     });
   }
-
-  $("#codigo_input").on("input", actualizarResultados);
-
+  
+  $("#codigo_input").on("input", actualizarResultados)
   $("#resultados_busqueda").on("click", ".elemento_resultado", function() {
+    
     const codigoSeleccionado = $(this).text().trim();
     $("#codigo_input").val(codigoSeleccionado);
     $("#resultados_busqueda").empty();
@@ -118,61 +124,63 @@ const precio = parseFloat($("#precio_input").val());
 const cantidad = parseInt($("#cantidad_input").val());
 
 if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
+  const subtotal = precio * cantidad;
+  const filaEncabezado = `
+  <tr class="encabezado">
+    <td>Código</td>
+    <td>Producto</td>
+    <td>Precio</td>
+    <td>Cantidad</td>
+    <td>Total</td>
+  </tr>
+  `;
+  const filaDatos = `
+  <tr class="fila-datos">
+    <td>${codigo}</td>
+    <td>${producto}</td>
+    <td>$${precio}</td>
+    <td>${cantidad}</td>
+    <td>$${subtotal}</td>
+  </tr>
+  `;
+  }
+  $("#ingresar_producto").on("click", function(event) {
+  event.preventDefault();
+  
+  const codigo = $("#codigo_input").val().trim();
+  const producto = $("#producto_input").val();
+  const precio = parseFloat($("#precio_input").val());
+  const cantidad = parseInt($("#cantidad_input").val());
+  
+  if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
     const subtotal = precio * cantidad;
     const filaEncabezado = `
     <tr class="encabezado">
-        <td>Código</td>
-        <td>Producto</td>
-        <td>Precio</td>
-        <td>Cantidad</td>
-        <td>Total</td>
+      <td>Código</td>
+      <td>Producto</td>
+      <td>Precio</td>
+      <td>Cantidad</td>
+      <td>Total</td>
     </tr>
     `;
     const filaDatos = `
     <tr class="fila-datos">
-        <td>${codigo}</td>
-        <td>${producto}</td>
-        <td>$${precio}</td>
-        <td>${cantidad}</td>
-        <td>$${subtotal}</td>
+      <td>${codigo}</td>
+      <td>${producto}</td>
+      <td>$${precio}</td>
+      <td>${cantidad}</td>
+      <td>$${subtotal}</td>
     </tr>
     `;
+    cargarDatosDesdeAlmacenamientoLocal();
+    function eliminarDatosDelAlmacenamientoLocal() {
+      localStorage.removeItem("datosTabla");
     }
-    $("#ingresar_producto").on("click", function(event) {
-    event.preventDefault();
-    
-    const codigo = $("#codigo_input").val().trim();
-    const producto = $("#producto_input").val();
-    const precio = parseFloat($("#precio_input").val());
-    const cantidad = parseInt($("#cantidad_input").val());
-    
-    if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
-        const subtotal = precio * cantidad;
-        const filaEncabezado = `
-        <tr class="encabezado">
-            <td>Código</td>
-            <td>Producto</td>
-            <td>Precio</td>
-            <td>Cantidad</td>
-            <td>Total</td>
-        </tr>
-        `;
-        const filaDatos = `
-        <tr class="fila-datos">
-            <td>${codigo}</td>
-            <td>${producto}</td>
-            <td>$${precio}</td>
-            <td>${cantidad}</td>
-            <td>$${subtotal}</td>
-        </tr>
-        `;
-cargarDatosDesdeAlmacenamientoLocal();
-
-function eliminarDatosDelAlmacenamientoLocal() {
-    localStorage.removeItem("datosTabla");
-}
-
-$("#btnEliminar").on("click", function() {
-    $(".tabla-datos").empty();
-    eliminarDatosDelAlmacenamientoLocal();
-})
+    $("#btnEliminar").on("click", function() {
+      $(".tabla-datos").empty();
+      eliminarDatosDelAlmacenamientoLocal();
+    });
+  };
+});
+});
+});
