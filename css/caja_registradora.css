@@ -31,8 +31,10 @@ header {
     align-items: center;
     margin-bottom: 20px;
 }
-::-webkit-inner-spin-button{
-    display: none;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 #contenedor input{
     background-color: #ffffff;
@@ -65,8 +67,7 @@ header {
     position: absolute;
     width: 28.5%;
     top: 21%;
-    background-color: #ccc;
-    padding: 0 10px;
+    background-color: #ccccccee;
     border-radius: 5px;
     font-size: 16px;
     max-height: 6em;
@@ -79,7 +80,6 @@ header {
 }
 .elemento_resultado:hover {
     background-color: #f2f8ff;
-    border-radius: 10px;
 }
 
 #encabezado{

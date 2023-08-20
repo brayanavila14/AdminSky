@@ -19,7 +19,7 @@
     <section id="encabezado">
         <h2>Items</h2>
         <h2>Código</h2>
-        <h2>Descripción</h2>
+        <h2>Producto</h2>
         <h2>Empaque</h2>
         <h2>Precio</h2>
         <h2>Cantidad</h2>
