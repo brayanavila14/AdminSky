@@ -1,5 +1,17 @@
 $(document).ready(function() {
   
+    $('#codigo_input').on('input', function() {
+      if ($(this).val() <= 0) {
+        $(this).val('');
+      } else if ($(this).val() >= 0) {
+        $('#codigo_input').on('keydown', function(e) {
+          if (e.keyCode == 40 || e.keyCode == 38) {
+            e.preventDefault();
+          };
+        });
+      };
+    });
+  
   let indiceSeleccionado = 0;
 
   let temporizador;
