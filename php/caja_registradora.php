@@ -11,9 +11,9 @@
 <body>
     <header><input id="Volver" type="button" value="Volver">Caja registradora</header>
     <section id="contenedor">
-        <input id="codigo_input" type="number" placeholder="Código" maxlength="5"><div id="resultado"></div>
+        <input id="codigo_input" type="number" placeholder="Código" maxlength="5"><div id="resultados_busqueda"></div>
         <input id="producto_input" type="text" placeholder="Producto" disabled>
-        <input type="number" placeholder="Precio" disabled><input type="number" placeholder="Cantidad">
+        <input id="precio_input" type="number" placeholder="Precio" disabled><input id="cantidad_input" type="number" placeholder="Cantidad">
         <input type="submit" value="Ingresar">
     </section>
     <section id="encabezado">
@@ -38,7 +38,3 @@
     <script src="../js/caja_registradora.js"></script>
 </body>
 </html>
-
-
-
-

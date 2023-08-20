@@ -1,9 +1,11 @@
 <?php 
-$conexion = mysqli_connect("localhost", "root", "", "sistema_caja");
+$hostname = 'localhost';
+$username = 'AdminSky';
+$password = 'Administrador#1428';
+$db_name = 'sistema_caja';
+$conexion = mysqli_connect($hostname, $username, $password, $db_name);
 
-if ($conexion) {
-    echo '<div style="display: none;">Conectado</div>';
-}else {
-    echo '<div>desconectado</div>';
+if (!$conexion) {
+    echo '<div>desconectado</div>';   
 }
 ?>
