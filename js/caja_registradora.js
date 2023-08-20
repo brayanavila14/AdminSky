@@ -80,8 +80,8 @@ $(document).ready(function() {
     });
   });
   function actualizarResultadoSeleccionado() {
-    $("#resultados_busqueda").children(".elemento_resultado").removeClass("seleccionado");
     $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).addClass("seleccionado");
+    $("#resultados_busqueda").children(".elemento_resultado").removeClass("seleccionado");
     const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
     $.ajax({
       url: "http://localhost:3000/php/busquedas_complemento.php?codigoSeleccionado=" + codigoSeleccionado,
