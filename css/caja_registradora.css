@@ -82,15 +82,14 @@ header {
     border-radius: 10px;
 }
 
-
 #encabezado{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     background-color: #82a2c9;
-    height: 3em;
+    height: 2.4em;
     padding: 6px 0;
-
+    font-size: 14px;
 }
 main{
     overflow: auto;
