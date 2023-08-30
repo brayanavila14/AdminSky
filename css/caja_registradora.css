@@ -78,7 +78,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px;
     cursor: pointer;
 }
-.elemento_resultado:hover {
+.elemento_resultado:hover, .seleccionado:hover {
     background-color: #f2f8ff;
 }
 
@@ -94,6 +94,9 @@ input[type=number]::-webkit-outer-spin-button {
 main{
     overflow: auto;
     max-height: max-content;
+    display: grid;
+    grid-template-columns: repeat(7 , 1fr);
+    text-align: center;
 }
 footer{
     background-color: #82a2c9;

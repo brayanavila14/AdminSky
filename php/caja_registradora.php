@@ -10,11 +10,13 @@
 </head>
 <body>
     <header><input id="Volver" type="button" value="Volver">Caja registradora</header>
-    <section id="contenedor">
-        <input id="codigo_input" type="number" placeholder="Código" maxlength="5"><div id="resultados_busqueda"></div>
-        <input id="producto_input" type="text" placeholder="Producto" disabled>
-        <input id="precio_input" type="number" placeholder="Precio" disabled><input id="cantidad_input" type="number" placeholder="Cantidad">
-        <input type="submit" value="Ingresar">
+    <section>
+        <form id="contenedor" method="post">
+            <input id="codigo_input" type="number" placeholder="Código" maxlength="5"><div id="resultados_busqueda"></div>
+            <input id="producto_input" type="text" placeholder="Producto" disabled>
+            <input id="precio_input" type="number" placeholder="Precio" disabled><input id="cantidad_input" type="number" placeholder="Cantidad">
+            <input id="ingresar_producto" type="submit" value="Ingresar">
+        </form>
     </section>
     <section id="encabezado">
         <h2>Items</h2>
@@ -25,7 +27,7 @@
         <h2>Cantidad</h2>
         <h2>Total</h2>
     </section>
-    <main></main>
+    <main id="factura"></main>
     <footer>
         <input id="t-pago" type="number" placeholder="Monto total" disabled>
         <label for="m-pago">método de pago:</label>

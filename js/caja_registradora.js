@@ -3,18 +3,18 @@ $(document).ready(function() {
   $('#codigo_input').on('input', function() {
     if ($(this).val() <= 0) {
       $(this).val('');
-    } else if ($(this).val() >= 0) {
-      $('#codigo_input').on('keydown', function(e) {
-        if (e.keyCode == 40 || e.keyCode == 38) {
-          e.preventDefault();
+    }
+    if ($(this).val() >= 0 || $(this).val('')) {
+      $('#codigo_input').on('keydown', function(tecla) {
+        if (tecla.keyCode == 40 || tecla.keyCode == 38) {
+          tecla.preventDefault();
         };
       });
     };
   });
   
-  let indiceSeleccionado = -1;
   let temporizador;
-    
+
     $("#codigo_input").on("input", function () {
       
       let codigo = $(this).val().trim();
@@ -48,9 +48,8 @@ $(document).ready(function() {
         $("#resultados_busqueda").empty();
       }
     });
-
-    $("#resultados_busqueda").on("click", ".elemento_resultado", function() {
     
+    $("#resultados_busqueda").on("click", ".elemento_resultado", function() {
     const codigoSeleccionado = $(this).text().trim();
     $("#codigo_input").val(codigoSeleccionado);
     $("#resultados_busqueda").empty();
@@ -69,6 +68,7 @@ $(document).ready(function() {
             if ($("#codigo_input").val() == '') {
               $("#producto_input").val('');
               $("#precio_input").val('');
+              $("#cantidad_input").val('');
             }
           })
           $("#cantidad_input").focus();
@@ -78,54 +78,16 @@ $(document).ready(function() {
         console.error('Error en la solicitud AJAX');
       }
     });
-  });
-  function actualizarResultadoSeleccionado() {
-    $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).addClass("seleccionado");
-    $("#resultados_busqueda").children(".elemento_resultado").removeClass("seleccionado");
-    const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
-    $.ajax({
-      url: "http://localhost:3000/php/busquedas_complemento.php?codigoSeleccionado=" + codigoSeleccionado,
-      method: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        if (data && data.length > 0) {
-          const producto = data[0].Producto;
-          const precio = data[0].Precio;
-          $("#producto_input").val(producto);
-          $("#precio_input").val(precio);
-        }
-      },
-      error: function() {
-        console.error('Error en la solicitud AJAX');
-      }
-    });
-  }
-  $("#codigo_input").on("keydown", function(event) {
-    const cantidadResultados = $("#resultados_busqueda").children(".elemento_resultado").length;
-    const teclaPresionada = event.keyCode;
-    if (teclaPresionada === 40) { // Flecha hacia abajo
-      indiceSeleccionado = (indiceSeleccionado + 1) % cantidadResultados;
-      actualizarResultadoSeleccionado();
-    } else if (teclaPresionada === 38) { // Flecha hacia arriba
-      indiceSeleccionado = (indiceSeleccionado - 1 + cantidadResultados) % cantidadResultados;
-      actualizarResultadoSeleccionado();
-      } else if (teclaPresionada === 13) { // Tecla Enter
-        const codigoSeleccionado = $("#resultados_busqueda").children(".elemento_resultado").eq(indiceSeleccionado).text().trim();
-        event.preventDefault();
-        $("#codigo_input").val(codigoSeleccionado);
-        $("#resultados_busqueda").empty();
-        const inputCantidad = document.getElementById('cantidad_input');
-        inputCantidad.focus();
-      }
-  });
+  });  
   $(document).on("click", function(event) {
     if (!$(event.target).closest("#resultados_busqueda").length) {
       $("#resultados_busqueda").empty();
-      indiceSeleccionado = -1;
     }
   });
+
+
   function guardarDatosEnAlmacenamientoLocal() {
-    const filas = $(".tabla-datos").html();
+    const filas = $("#factura").html();
     localStorage.setItem("datosTabla", filas);
   }
 
@@ -134,35 +96,28 @@ $(document).ready(function() {
 
     const codigo = $("#codigo_input").val().trim();
     const producto = $("#producto_input").val();
-    const precio = parseFloat($("#precio_input").val());
-    const cantidad = parseInt($("#cantidad_input").val());
+    const precio = $("#precio_input").val();
+    const cantidad = $("#cantidad_input").val();
 
     if (codigo !== "" && producto !== "" && !isNaN(precio) && !isNaN(cantidad)) {
       const subtotal = precio * cantidad;
       const filaDatos = `
-      <tr class="fila-datos">
-        <td>${codigo}</td>
-        <td>${producto}</td>
-        <td>$${precio}</td>
-        <td>${cantidad}</td>
-        <td>$${subtotal}</td>
-      </tr>`;
-      $(".tabla-datos").append(filaEncabezado);
-      $(".tabla-datos").append(filaDatos);
+        <p>${codigo}</p>
+        <p>${producto}</p>
+        <p>$${precio}</p>
+        <p>${cantidad}</p>
+        <p>$${subtotal}</p>`;
+      $("#factura").append(filaDatos);
       
       $("#codigo_input").val("");
       $("#producto_input").val("");
       $("#precio_input").val("");
       $("#cantidad_input").val("");
       $("#resultados_busqueda").empty();
-      indiceSeleccionado = 0;
-      
-      const inputCodigo = document.getElementById('codigo_input');
-      inputCodigo.focus();
-      
+      $('codigo_input').focus();
+      total += subtotal;
+      $("#t-pago").text(total);
       guardarDatosEnAlmacenamientoLocal();
-      
-      $("#total_input").val(subtotal);
     } else {
         alert("Por favor, ingrese todos los campos correctamente.");
       }
@@ -170,7 +125,7 @@ $(document).ready(function() {
     function cargarDatosDesdeAlmacenamientoLocal() {
       const datosGuardados = localStorage.getItem("datosTabla");
       if (datosGuardados) {
-        $(".tabla-datos").html(datosGuardados);
+        $("#factura").html(datosGuardados);
       }
     }
   
@@ -180,8 +135,8 @@ $(document).ready(function() {
     localStorage.removeItem("datosTabla");
   }
   
-  $("#btnEliminar").on("click", function() {
-    $(".tabla-datos").empty();
+  $("#limpiar_button").on("click", function() {
+    $("#factura").empty();
     eliminarDatosDelAlmacenamientoLocal();
   });
 });
