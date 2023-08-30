@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Movimientos - AdminSky</title>
 </head>
 <body>
@@ -10,7 +12,10 @@
         <h1>nombre de la empresa</h1>
         <p>&copy;2023 AdminSky | Todos los derechos reservados</p>
     </header>
-    <div> <input type="button" value="Ventas"><input type="button" value="Gastos"></div>
+    <nav>
+        <button> Ventas </button>
+        <button> Gastos </button>
+    </nav>
     <main>
         <div>
             <h5>Nombre</h5>
